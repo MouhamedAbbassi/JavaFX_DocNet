@@ -1,0 +1,10 @@
+.root
+{
+    -fx-background-image:url('../../resource/bgg.png');
+    -fx-background-size: cover;
+}
+.Vbox
+{
+    -fx-background-color:#13123A ;
+    -fx-background-size: cover;
+}

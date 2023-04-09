@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterController">
+   <children>
+      <Label layoutX="112.0" layoutY="148.0" prefHeight="26.0" prefWidth="47.0" styleClass="label1" stylesheets="@styles/login.css" text="Nom" />
+      <Label layoutX="109.0" layoutY="188.0" styleClass="label1" stylesheets="@styles/login.css" text="Prenom" />
+      <Label layoutX="109.0" layoutY="224.0" styleClass="label1" stylesheets="@styles/login.css" text="Email" />
+      <Label layoutX="109.0" layoutY="263.0" styleClass="label1" stylesheets="@styles/login.css" text="Password" />
+      <Label layoutX="112.0" layoutY="111.0" styleClass="label1" stylesheets="@styles/login.css" text="Role" />
+      <TextField fx:id="nom" layoutX="196.0" layoutY="149.0" />
+      <TextField fx:id="prenom" layoutX="196.0" layoutY="187.0" />
+      <TextField fx:id="email" layoutX="197.0" layoutY="223.0" />
+      <PasswordField fx:id="password" layoutX="197.0" layoutY="259.0" />
+      <Button fx:id="registerBtn" layoutX="392.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#register" styleClass="button1" stylesheets="@styles/login.css" text="register" />
+      <Label layoutX="329.0" layoutY="30.0" prefHeight="26.0" prefWidth="182.0" text="already have an account ? " textFill="WHITE" underline="true" />
+      <Button fx:id="login" layoutX="507.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#login" styleClass="button1" stylesheets="@styles/login.css" text="login" />
+      <ChoiceBox fx:id="role" layoutX="196.0" layoutY="111.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

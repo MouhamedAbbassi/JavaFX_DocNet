@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="606.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+   <children>
+      <TextField fx:id="email" layoutX="236.0" layoutY="128.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="password" layoutX="236.0" layoutY="171.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="177.0" layoutY="130.0" styleClass="label1" stylesheets="@styles/login.css" text="Email" />
+      <Label layoutX="149.0" layoutY="170.0" styleClass="label1" stylesheets="@styles/login.css" text="Password" textFill="#a4c6ef" />
+      <Button fx:id="loginBtn" layoutX="303.0" layoutY="211.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="80.0" styleClass="button1" stylesheets="@styles/login.css" text="Login" />
+      <Button fx:id="register" layoutX="467.0" layoutY="21.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#register" prefHeight="38.0" prefWidth="112.0" styleClass="button1" stylesheets="@styles/login.css" text="SingUp" textFill="WHITE">
+         <font>
+            <Font size="4.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

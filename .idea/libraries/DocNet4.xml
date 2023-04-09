@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DocNet4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/run904709355/DocNet.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

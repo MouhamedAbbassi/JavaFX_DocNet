@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="DocNet.jnlp">
+  <information>
+    <title>DocNet</title>
+    <vendor>muham</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="DocNet.jar" size="569540" download="eager" />
+    <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
+    <jar href="lib\AnimateFX-1.2.4.jar" size="99334" download="eager" />
+    <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\httpmime-4.5.3.jar" size="41029" download="eager" />
+    <jar href="lib\ini4j-0.5.1.jar" size="96879" download="eager" />
+    <jar href="lib\java-mail-1.4.4.jar" size="494975" download="eager" />
+    <jar href="lib\javafx-base-21-ea+5.jar" size="302" download="eager" />
+    <jar href="lib\javafx-graphics-21-ea+5.jar" size="306" download="eager" />
+    <jar href="lib\javafx-swing-21-ea+5.jar" size="303" download="eager" />
+    <jar href="lib\javafx.base.jar" size="752299" download="eager" />
+    <jar href="lib\javax.activation-1.2.0.jar" size="78030" download="eager" />
+    <jar href="lib\jbcrypt-0.4-sources.jar" size="14306" download="eager" />
+    <jar href="lib\jbcrypt-0.4.jar" size="17429" download="eager" />
+    <jar href="lib\jdatepicker-1.1.0.jar" size="22625" download="eager" />
+    <jar href="lib\jdatepicker-1.3.2.jar" size="33887" download="eager" />
+    <jar href="lib\jfoenix-1.0.0.jar" size="2186636" download="eager" />
+    <jar href="lib\jfoenix-1.4.0.jar" size="2363143" download="eager" />
+    <jar href="lib\jfoenix-1.9.0-javadoc.jar" size="702232" download="eager" />
+    <jar href="lib\jfoenix-8.0.10 (1).jar" size="2710207" download="eager" />
+    <jar href="lib\jfoenix-8.0.10.jar" size="2710207" download="eager" />
+    <jar href="lib\jfoenix-9.0.10-javadoc.jar" size="1280918" download="eager" />
+    <jar href="lib\jfoenix-9.0.10.jar" size="2432549" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.48.jar" size="1006956" download="eager" />
+    <jar href="lib\ojdbc14-10.2.0.2.0.jar" size="1545954" download="eager" />
+    <jar href="lib\regex.jar" size="223148" download="eager" />
+    <jar href="lib\twilio-8.9.0-jar-with-dependencies.jar" size="8358946" download="eager" />
+    <jar href="lib\twilio-8.9.0-javadoc.jar" size="14288596" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="DocNet" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="Main"  name="DocNet" />
+  <update check="always"/>
+</jnlp>
