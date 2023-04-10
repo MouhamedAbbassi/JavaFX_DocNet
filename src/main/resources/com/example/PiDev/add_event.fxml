@@ -63,5 +63,10 @@
             </HBox>
          </children>
       </VBox>
+      <Text layoutX="228.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD EVENT">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
