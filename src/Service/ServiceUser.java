@@ -106,10 +106,6 @@ public static UserSession userSession;
             ResultSet rs;
             rs = pst.executeQuery();
 
-            requete = "SELECT nom,prenom,email,image,numero FROM user WHERE email like ?";
-            pst = MaConnexion.getInstance().getCnx().prepareStatement(requete);
-            pst.setString(1, mail);
-            rs = pst.executeQuery();
                while (rs.next()) 
                {
                    user = new User(rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("image"),rs.getString("numero") );               

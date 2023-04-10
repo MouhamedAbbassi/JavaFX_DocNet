@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
  
-public class HomeController implements Initializable {
+public class gererProfile implements Initializable {
 
     @FXML
     private TextField nom;

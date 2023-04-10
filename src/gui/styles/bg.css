@@ -3,6 +3,11 @@
     -fx-background-image:url('../../resource/bgg.png');
     -fx-background-size: cover;
 }
+.root1
+{
+    -fx-background-image:url('../../resource/DocNet.png');
+    -fx-background-size: cover;
+}
 .Vbox
 {
     -fx-background-color:#13123A ;

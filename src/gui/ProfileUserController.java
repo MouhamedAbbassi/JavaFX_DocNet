@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,13 +22,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -46,9 +51,12 @@ public class ProfileUserController implements Initializable {
     private Label email;
     @FXML
     private Label numero;
+ 
+ 
     @FXML
-    private Button update;
-
+    private Label logout;
+ 
+ 
     
            public List<File> findAllFilesInFolder(File folder) {
         List<File> list = new ArrayList<>();
@@ -89,15 +97,25 @@ public class ProfileUserController implements Initializable {
         nom.setText(userSession.getUser().getNom());
         prenom.setText(userSession.getUser().getPrenom());
         email.setText(userSession.getUser().getEmail()); 
-        numero.setText(userSession.getUser().getNumero());
+        numero.setText(userSession.getUser().getNumero()); 
+ 
 
     }    
 
     @FXML
     private void GererProfile(MouseEvent event) throws IOException
     {
-             Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+             Parent root = FXMLLoader.load(getClass().getResource("gererProfile.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     Scene scene = new Scene(root);
+     stage.setScene(scene);
+     stage.show();
+    }
+
+    @FXML
+    private void logout(MouseEvent event) throws IOException {
+     Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
      Scene scene = new Scene(root);
      stage.setScene(scene);
      stage.show();

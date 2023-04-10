@@ -12,6 +12,8 @@ import Service.UserSession;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +23,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
  
 public class LoginController implements Initializable
@@ -45,15 +49,18 @@ public class LoginController implements Initializable
     {
         if (event.getSource() == loginBtn) 
         {
+            if (validateEmail(email) & validatePassword(password)){
                 User user = ServiceUser.login( email.getText(), password.getText());
                 ServiceUser.userSession = new UserSession();            
                 ServiceUser.userSession.setUserEmail(user.getEmail());
                 Role roles = user.getRole();             
+                System.out.println(roles);
                 Parent root = FXMLLoader.load(getClass().getResource("profileUser.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+        }
         }
     }
     
@@ -71,6 +78,41 @@ public class LoginController implements Initializable
      stage.setScene(scene);
      stage.show();
     }
+    
+        private boolean validateEmail(TextField email) {
+
+        Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher m = p.matcher(email.getText());
+        if (((email.getText().length() > 8))
+                && (m.find() && m.group().equals(email.getText()))) {
+            email.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(email).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            email.setEffect(in);
+            return false;
+        }
+
+    }
+      private boolean validatePassword(TextField password) {
+
+        Pattern p = Pattern.compile("[a-zA-Z_0-9]+");
+        Matcher m = p.matcher(password.getText());
+        if (((password.getText().length() > 6))
+                && (m.find() && m.group().equals(password.getText()))) {
+            password.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(password).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            password.setEffect(in);
+            return false;
+        }
+
+    }   
    
 }
 
