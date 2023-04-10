@@ -1,0 +1,10 @@
+.root
+{
+    -fx-background-image:url('ccc.jpg');
+    -fx-background-size: cover;
+}
+.Vbox
+{
+    -fx-background-color:#13123A ;
+    -fx-background-size: cover;
+}

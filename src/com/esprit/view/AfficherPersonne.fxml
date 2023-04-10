@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="770.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.AfficheOrdonnanceController">
+   <children>
+      <HBox layoutX="270.0" layoutY="400.0" spacing="10.0" />
+      <TableView fx:id="tftableview" layoutX="33.0" layoutY="56.0" prefHeight="310.0" prefWidth="690.0">
+        <columns>
+          <TableColumn fx:id="nomMedecin" prefWidth="115.0" text="nomMedecin" />
+          <TableColumn fx:id="nomPatient" prefWidth="115.0" text="nomPatient" />
+            <TableColumn fx:id="date" prefWidth="115.0" text="date" />
+            <TableColumn fx:id="commentaire" prefWidth="115.0" text="commentaire" />
+            <TableColumn fx:id="update" prefWidth="115.0" text="Update" />
+            <TableColumn fx:id="delete" prefWidth="115.0" text="delete" />
+        </columns>
+      </TableView>
+      <Button fx:id="patient" layoutX="201.0" layoutY="394.0" mnemonicParsing="false" onAction="#patientButton" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: #CCCCFF;" text="Liste des patients" />
+      <Button fx:id="reservation" layoutX="381.0" layoutY="395.0" mnemonicParsing="false" onAction="#reservationButton" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: #CCCCFF;" text="Listes des reservations" />
+      <Label layoutX="194.0" layoutY="14.0" prefHeight="34.0" prefWidth="381.0" text="Ce sont toutes les ordonnances">
+         <font>
+            <Font name="Serif Regular" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="logOut" layoutX="670.0" layoutY="496.0" mnemonicParsing="false" onAction="#logoutButton" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #CCCCFF;" text="Log Out" />  
+   </children>
+</AnchorPane>
