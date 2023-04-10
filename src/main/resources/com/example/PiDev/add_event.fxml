@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PiDev.addEvent">
+   <children>
+      <VBox layoutX="146.0" layoutY="75.0" prefHeight="250.0" prefWidth="309.0">
+         <children>
+            <HBox prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="nom" wrappingWidth="78.8564453125" />
+                  <TextField fx:id="etnom" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="capacite" wrappingWidth="78.8564453125" />
+                  <TextField fx:id="etcapacite" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="local" wrappingWidth="78.8564453125" />
+                  <TextField fx:id="local" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="70.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="date" wrappingWidth="78.8564453125" />
+                  <DatePicker fx:id="date" prefHeight="24.0" prefWidth="173.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="100.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="prix" wrappingWidth="78.8564453125" />
+                  <TextField fx:id="prix" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="130.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="description" wrappingWidth="78.8564453125" />
+                  <TextField fx:id="desc" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="160.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="categorie" wrappingWidth="78.8564453125" />
+                  <MenuButton fx:id="categorie" mnemonicParsing="false" prefHeight="24.0" prefWidth="170.0" text="choose ">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="prive" />
+                      <MenuItem mnemonicParsing="false" text="public" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="190.0" prefHeight="30.0" prefWidth="309.0">
+               <children>
+                  <Button fx:id="savebtn" mnemonicParsing="false" onAction="#saveEvent" prefHeight="24.0" prefWidth="219.0" text="save" />
+                  <Button fx:id="cancelbtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="234.0" text="cancel" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
