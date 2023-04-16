@@ -84,7 +84,7 @@ public class ListePatientController implements Initializable{
                 }
             }
         });
-        Label nameLabel = new Label(patient.getUsername() + " " + patient.getLastname());
+        Label nameLabel = new Label(patient.getNom() + " " + patient.getPrenom());
         patientBox.getChildren().addAll(imageView, nameLabel,voirFicheBtn);
         patientBox.setAlignment(Pos.CENTER);
         patientContainer.getChildren().add(patientBox);

@@ -58,7 +58,7 @@ public class AjouterReservationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         for (User medecin : medecins) {
-    medecinNames.add(medecin.getLastname()+ " " + medecin.getUsername());
+    medecinNames.add(medecin.getPrenom()+ " " + medecin.getNom());
 }
 
 // Set the string list as the data source for the ComboBox
@@ -72,7 +72,7 @@ medecin.setItems(FXCollections.observableArrayList(medecinNames));
     // Find the corresponding User object from the list medecins
     User selectedMedecin = null;
     for (User medecin : medecins) {
-        if ((medecin.getLastname() + " " + medecin.getUsername()).equals(selectedMedecinName)) {
+        if ((medecin.getPrenom() + " " + medecin.getNom()).equals(selectedMedecinName)) {
             selectedMedecin = medecin;
             break;
         }

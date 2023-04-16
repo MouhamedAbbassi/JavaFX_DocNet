@@ -107,8 +107,8 @@ public class AjouterOrdonnanceController implements Initializable{
         User pat = userService.findUser(ordPatientId);
         doctor = doc;
         patient = pat;
-        nomMedecinField.setText(doctor.getUsername()+" "+doctor.getLastname());
-        nomPatientField.setText(patient.getUsername()+" "+patient.getLastname());
+        nomMedecinField.setText(doctor.getNom()+" "+doctor.getPrenom());
+        nomPatientField.setText(patient.getNom()+" "+patient.getPrenom());
         nomMedecinField.setEditable(false);
         nomPatientField.setEditable(false);
     } 

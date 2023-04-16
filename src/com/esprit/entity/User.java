@@ -11,8 +11,8 @@ package com.esprit.entity;
  */
 public class User {
     private int id;
-    private String username;
-    private String lastname;
+    private String nom;
+    private String prenom;
     private String password;
     private String email;
     private String image;
@@ -21,8 +21,8 @@ public class User {
     }
 
     public User(String username, String lastname, String image) {
-        this.username = username;
-        this.lastname = lastname;
+        this.nom = username;
+        this.prenom = lastname;
         this.image = image;
     }
     
@@ -30,14 +30,14 @@ public class User {
     
     public User(int id, String username, String password) {
         this.id = id;
-        this.username = username;
+        this.nom = username;
         this.password = password;
     }
 
     public User(int id, String username, String lastname, String email) {
         this.id = id;
-        this.username = username;
-        this.lastname = lastname;
+        this.nom = username;
+        this.prenom = lastname;
         this.email = email;
     }
     
@@ -49,12 +49,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNom() {
+        return nom;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNom(String username) {
+        this.nom = username;
     }
 
     public String getPassword() {
@@ -81,12 +81,12 @@ public class User {
         this.image = image;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setPrenom(String lastname) {
+        this.prenom = lastname;
     }
     
 }

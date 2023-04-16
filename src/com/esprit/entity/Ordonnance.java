@@ -24,6 +24,7 @@ public class Ordonnance {
     private List<OrdonnanceMedicament> medicaments;
     private List<User> doctors;
     private int idOrdonnance;
+    private int idReservation;
 
     public Ordonnance() {
         medicaments = new ArrayList<>();

@@ -8,8 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ConnexionBDJavafx.jar" size="928410" download="eager" />
+    <jar href="ConnexionBDJavafx.jar" size="5174706" download="eager" />
+    <jar href="lib\fontbox-2.0.1.jar" size="1476856" download="eager" />
+    <jar href="lib\javax.mail-1.6.2.jar" size="659031" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\org-apache-commons-logging.jar" size="60786" download="eager" />
+    <jar href="lib\pdfbox-2.0.1.jar" size="2434793" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ConnexionBDJavafx" >
     <param name="requiredFXVersion" value="8.0+"/>

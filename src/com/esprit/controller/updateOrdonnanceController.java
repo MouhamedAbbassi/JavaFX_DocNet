@@ -32,6 +32,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.mail.MessagingException;
+
 
 /**
  *
@@ -72,8 +74,8 @@ public class updateOrdonnanceController {
     private ObservableList<formRepeater> formControllers = FXCollections.observableArrayList();
 
     public ObservableList<formRepeater> getFormControllers() {
-        if(formControllers.size() == 0)
-            System.out.println("taille 0 lenna");
+        
+            
         return formControllers;
     }
 
@@ -88,15 +90,13 @@ public class updateOrdonnanceController {
      
      private int lenght = 0;
      int idO;
+     String recipientEmail;
       OrdonnanceService service = new OrdonnanceService();
     //ObservableList<Ordonnance> list = service.getall();
     MedicamentService serviceM = new MedicamentService();
     ObservableList<Medicament> listM = serviceM.getall();
     OrdonnanceMedicamentService serviceMO = new OrdonnanceMedicamentService();
-/*ObservableList<Integer> idList = FXCollections.observableArrayList();
-MedicamentService serviceM = new MedicamentService();
-ObservableList<Medicament> listM = serviceM.getall();
-ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
+
 
 
     /**
@@ -111,8 +111,9 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
         }
          
     }    
-     public void initialize(Ordonnance ordonnance) throws IOException {
-         idO=ordonnance.getId();
+     public void initialize(Ordonnance ordonnance,String patientEmail) throws IOException {
+         idO = ordonnance.getId();
+         recipientEmail = patientEmail;
          if (ordonnance != null) {
             nomMedecinField.setText(ordonnance.getNomMedecin());
             nomPatientField.setText(ordonnance.getNomPatient());
@@ -136,7 +137,7 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
                 Parent formRoot = loader.load();
                 formRepeater formController = loader.getController();
                 formController.initialize(this.lenght, formControllers);
-                System.out.println();
+           
                 formController.setMedicamentComboBox(serviceM.getMedicamentNameById(om.getIdMedicament()));
                 formController.setDosageTextField(String.valueOf(om.getDosage()));
                 formController.setDurationTextField(String.valueOf(om.getDuration()));
@@ -151,7 +152,7 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
     }    
     
     @FXML
-    private void insertButton(ActionEvent event) throws IOException {
+    private void insertButton(ActionEvent event) throws IOException, MessagingException {
         String commentaire = commentaireField.getText();
         if (commentaire.length() < 3) {
             // show an error message and return
@@ -165,10 +166,9 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
         Ordonnance o = new Ordonnance(nomMedecinField.getText(), nomPatientField.getText(), commentaireField.getText());
          service.modifier(o,idO);
         // get the values of the dosage and duration fields
-        System.out.println(formControllers.size());
+     
         for (formRepeater formController : formControllers) {
-        System.out.println(formController.id);
-        System.out.println(formController.getDosageTextField());
+      
         String dosage = formController.getDosageTextField();
         String duration = formController.getDurationTextField();
         String nomMedicament = formController.getNomMedicamentComboBox();
@@ -203,16 +203,16 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
         }
         }
         for (formRepeater formController : formControllers) {
-            System.out.println(formController.id);
-            System.out.println(formController.getDosageTextField());
+            
             String dosage = formController.getDosageTextField();
             String duration = formController.getDurationTextField();
             String nomMedicament = formController.getNomMedicamentComboBox();
             MedicamentService medicamentService = new MedicamentService();
             int medicamentId = medicamentService.getIdByName(nomMedicament);
-            System.out.println(dosage);
+           
             OrdonnanceMedicament om = new OrdonnanceMedicament(Integer.parseInt(dosage), Integer.parseInt(duration) ,medicamentId);
             service.modifierOM(om,idO);
+            EmailSender.sendEmail(recipientEmail);
         }
         try {
             Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/AfficherPersonne.fxml"));
@@ -245,7 +245,6 @@ ObservableList<String> nomMedicaments = FXCollections.observableArrayList();*/
             formRepeater formController = loader.getController();
             formController.initialize(this.lenght,formControllers);
             formControllers.add(formController);
-            System.out.println("lenght in add button"+ formControllers.size());
             formContainer.getChildren().add(formRoot);
             formRoot.setVisible(true);
             this.lenght = this.lenght + 1;

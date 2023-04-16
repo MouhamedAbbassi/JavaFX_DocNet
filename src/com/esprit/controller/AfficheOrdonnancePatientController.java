@@ -114,7 +114,7 @@ public class AfficheOrdonnancePatientController implements Initializable {
             Group group = new Group(doctorImage);
             doctorImage.setTranslateX(6);
             doctorImage.setTranslateY(37);
-            Label doctorName = new Label(ordonnance.getDoctors().get(0).getUsername() + " " + ordonnance.getDoctors().get(0).getLastname());
+            Label doctorName = new Label(ordonnance.getDoctors().get(0).getNom() + " " + ordonnance.getDoctors().get(0).getPrenom());
             doctorName.setStyle("-fx-font-size: 20;-fx-font-family: serif;");
             doctorName.setPadding(new Insets(20, 0, 0, 10));
 

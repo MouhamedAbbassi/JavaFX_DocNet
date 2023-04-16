@@ -79,9 +79,9 @@ public class UserService {
             if (rs.next()) {
                 User patient = new User();
                 patient.setId(rs.getInt("id"));
-                patient.setUsername(rs.getString("nom"));
+                patient.setNom(rs.getString("nom"));
                 patient.setEmail(rs.getString("email"));
-                patient.setLastname(rs.getString("prenom"));
+                patient.setPrenom(rs.getString("prenom"));
                 patient.setImage(rs.getString("image"));
                 // Add other fields as needed
                 patients.add(patient);
@@ -134,8 +134,8 @@ public class UserService {
         while (resultSet.next()) {
             User user = new User();
             user.setId(resultSet.getInt("id"));
-            user.setLastname(resultSet.getString("nom"));
-            user.setUsername(resultSet.getString("prenom"));
+            user.setNom(resultSet.getString("nom"));
+            user.setPrenom(resultSet.getString("prenom"));
             users.add(user);
         }
 
@@ -143,5 +143,64 @@ public class UserService {
         Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
     }
     return users;
-     }
+    }
+    public String getPatientEmail(int id) {
+        String patientEmail = ""; // initialize with an invalid value
+        try {
+            String req = "SELECT email FROM user WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                patientEmail = rs.getString("email");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patientEmail;
+    }
+    public User getPatientInfo(int id) {
+        User patient = null; // initialize with an invalid value
+        try {
+            String req = "SELECT * FROM user WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                patient = new User();
+                patient.setId(rs.getInt("id"));
+                patient.setEmail(rs.getString("email"));
+                patient.setNom(rs.getString("nom"));
+                patient.setPrenom(rs.getString("prenom"));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patient;
+    }
+    public User getDoctorInfo(int id) {
+        User doctor = null; // initialize with an invalid value
+        try {
+            String req = "SELECT * FROM user WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                doctor = new User();
+                doctor.setId(rs.getInt("id"));
+                doctor.setEmail(rs.getString("email"));
+                doctor.setNom(rs.getString("nom"));
+                doctor.setPrenom(rs.getString("prenom"));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return doctor;
+    }
 }

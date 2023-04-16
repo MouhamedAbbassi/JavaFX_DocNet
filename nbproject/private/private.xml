@@ -4,13 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/Services/OrdonnanceService.java</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/AccueilController.java</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/AjouterReservationController.java</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/view/updateOrdonnance.fxml</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/AjouterOrdonnanceController.java</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/updateOrdonnanceController.java</file>
             <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/AfficheOrdonnanceController.java</file>
-            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/AfficheOrdonnancePatientController.java</file>
+            <file>file:/C:/Users/asus/Desktop/ConnexionBDJavafx/src/com/esprit/controller/updateOrdonnanceController.java</file>
         </group>
     </open-files>
 </project-private>

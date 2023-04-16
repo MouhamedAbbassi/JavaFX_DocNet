@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -36,7 +37,7 @@ public class OrdonnanceService {
     }
     public ObservableList<user_user> getPatientListe(int id) {
         ObservableList<user_user> ordonnances = FXCollections.observableArrayList();
-        System.out.println(id);
+       
         try {
             String req = "select * from user_user where user_source="+id;
             Statement st = cnx.createStatement();
@@ -56,7 +57,7 @@ public class OrdonnanceService {
     }
     public ObservableList<Ordonnance> getallOrdonnance(int id) {
         ObservableList<Ordonnance> ordonnances = FXCollections.observableArrayList();
-        System.out.println(id);
+        
         try {
             
             String req = "SELECT ordonnance.*, user.nom, user.prenom, user.image FROM ordonnance JOIN user ON ordonnance.doctor_id = user.id WHERE patient_id = " + id;
@@ -73,8 +74,8 @@ public class OrdonnanceService {
             o.setIdOrdonnance(rs.getInt("doctor_id"));
             // Retrieve doctor information from the user table
             User doctor = new User();
-             doctor.setUsername(rs.getString("nom"));
-            doctor.setLastname(rs.getString("prenom"));
+             doctor.setNom(rs.getString("nom"));
+            doctor.setPrenom(rs.getString("prenom"));
             doctor.setImage(rs.getString("image"));
             o.addDoctors(doctor);
                 String medicamentReq = "SELECT medicament_id, dosage, duration FROM ordonnance_medicament WHERE ordonnance_id = " + o.getId();
@@ -98,7 +99,7 @@ public class OrdonnanceService {
       
     public ObservableList<Ordonnance> getall(int id) {
         ObservableList<Ordonnance> ordonnances = FXCollections.observableArrayList();
-        System.out.println(id);
+     
         try {
             String req = "select * from ordonnance where doctor_id="+id;
             Statement st = cnx.createStatement();
@@ -125,14 +126,9 @@ public class OrdonnanceService {
  
           String qry1="DELETE from ordonnance_medicament where ordonnance_id="+id;
           String qry = "UPDATE ordonnance SET nom_medecin='"+o.getNomMedecin()+"',nom_patient='"+o.getNomPatient()+"',commentaire='"+o.getCommentaire()+"' WHERE ID="+id+"";
-          System.out.println(qry);
+        
           Statement statement = cnx.createStatement();
           int rowsUpdated1 = statement.executeUpdate(qry1);
-          if (rowsUpdated1 > 0) {
-            System.out.println("The record delete has been updated successfully.");
-          } else {
-            System.out.println("Failed to delete the record.");
-          }
           int rowsUpdated = statement.executeUpdate(qry);
           if (rowsUpdated > 0) {
             System.out.println("The record has been updated successfully.");
@@ -161,7 +157,7 @@ public class OrdonnanceService {
     }
      public void Inserer(Ordonnance o , int reservation_id, int doctor_id, int patient_id) {
         try {
-            System.out.println("444");
+           
             String qry = "INSERT INTO ordonnance (doctor_id, patient_id, reservations_id, nom_medecin, nom_patient, date, commentaire) VALUES ('" + doctor_id + "','"+ patient_id + "','"+ reservation_id + "','" + o.getNomMedecin() + "','" + o.getNomPatient() + "',CURRENT_DATE(),'" + o.getCommentaire() + "')";
             Statement statement = cnx.createStatement();
             int rowsUpdated = statement.executeUpdate(qry);
@@ -179,32 +175,20 @@ public class OrdonnanceService {
         }
         
     }
-      public void InsererOm(OrdonnanceMedicament om) {
+    public void InsererOm(OrdonnanceMedicament om) {
         try {
-            System.out.println("444");
-          
-          String qry1 = "INSERT INTO ordonnance_medicament (ordonnance_id, medicament_id, dosage, duration) VALUES ('" + ordId + "','" + om.getIdMedicament()+ "','" + om.getDosage() + "','" + om.getDuration() + "')";
-         /*String qry = "INSERT INTO ordonnance (nom_medecin, nom_patient, date, commentaire) " +
-            "VALUES ('" + o.getNomMedecin() + "','" + o.getNomPatient() + "',CURRENT_DATE(),'" + o.getCommentaire() + "'); " +
-            "INSERT INTO ordonnance_medicament (ordonnance_id, dosage, duration) " +
-            "VALUES (LAST_INSERT_ID(),'" + om.getDosage()+ "','"+ om.getDuration()+  "')";*/
-         
-          Statement statement = cnx.createStatement();
-
-          statement.executeUpdate(qry1);
-         
-            
-            
-        } catch (SQLException ex) {
+            String qry1 = "INSERT INTO ordonnance_medicament (ordonnance_id, medicament_id, dosage, duration) VALUES ('" + ordId + "','" + om.getIdMedicament()+ "','" + om.getDosage() + "','" + om.getDuration() + "')";
+            Statement statement = cnx.createStatement();
+            statement.executeUpdate(qry1);  
+        }catch (SQLException ex) {
             Logger.getLogger(OrdonnanceService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
       public void delete(int id) {
         try {
           String qry1="delete from ordonnance_medicament where ordonnance_id="+id;
           String qry="delete from ordonnance where id="+id;
-          System.out.println(qry);
+         
           Statement statement = cnx.createStatement();
           statement.executeUpdate(qry1);
           int rowsUpdated = statement.executeUpdate(qry);
@@ -249,6 +233,23 @@ public class OrdonnanceService {
         System.out.println(ex.getMessage());
     }
     return ordonnances;
-}
+    }
+    public int getPatientId(int id) {
+        int patientId = -1; // initialize with an invalid value
+        try {
+            String req = "SELECT patient_id FROM ordonnance WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                patientId = rs.getInt("patient_id");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patientId;
+    }
     
 }
