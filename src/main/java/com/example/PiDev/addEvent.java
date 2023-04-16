@@ -77,7 +77,7 @@ public class addEvent {
         LocalDate eventDate = date.getValue();
         if (eventDate == null) {
             // Show error message
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select event date pleaaaaase");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select event date pleaaase");
             alert.showAndWait();
             return;
         }
