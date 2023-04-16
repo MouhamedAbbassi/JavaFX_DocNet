@@ -58,7 +58,7 @@ public class addEvent {
                 return;
             }
         } catch (NumberFormatException e) {
-            // Show error message
+            // Show error messages wow
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid integer for capacity");
             alert.showAndWait();
             return;
@@ -77,7 +77,7 @@ public class addEvent {
         LocalDate eventDate = date.getValue();
         if (eventDate == null) {
             // Show error message
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select event date");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select event date pleaaaaase");
             alert.showAndWait();
             return;
         }
