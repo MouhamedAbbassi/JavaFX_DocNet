@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
@@ -43,6 +44,8 @@ public class LoginController implements Initializable
     private TextField password;
     @FXML
     private Button register;
+    @FXML
+    private Label forgetPassword;
 
     @FXML
     void login(ActionEvent event) throws IOException
@@ -53,7 +56,8 @@ public class LoginController implements Initializable
                 User user = ServiceUser.login( email.getText(), password.getText());
                 ServiceUser.userSession = new UserSession();            
                 ServiceUser.userSession.setUserEmail(user.getEmail());
-                Role roles = user.getRole();             
+                Role roles = user.getRole(); 
+                System.out.println(roles);
                 System.out.println(roles);
                 Parent root = FXMLLoader.load(getClass().getResource("profileUser.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -113,6 +117,18 @@ public class LoginController implements Initializable
         }
 
     }   
+
+    @FXML
+    private void forgetPassword(MouseEvent event) throws IOException 
+    {
+         Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     Scene scene = new Scene(root);
+     stage.setScene(scene);
+     stage.show();
+    }
+
+
    
 }
 

@@ -26,5 +26,6 @@
          </font></Button>
       <PasswordField fx:id="password" layoutX="236.0" layoutY="171.0" />
       <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="61.0" prefWidth="126.0" styleClass="root1" stylesheets="@styles/bg.css" />
+      <Label fx:id="forgetPassword" layoutX="237.0" layoutY="224.0" onMouseClicked="#forgetPassword" prefHeight="18.0" prefWidth="112.0" text="forget password " underline="true" />
    </children>
 </AnchorPane>

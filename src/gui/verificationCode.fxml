@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VerificationCodeController">
+   <children>
+      <TextField fx:id="code" layoutX="236.0" layoutY="128.0" prefHeight="26.0" prefWidth="185.0" promptText="Type your code" />
+      <Label layoutX="199.0" layoutY="129.0" prefHeight="24.0" prefWidth="26.0" styleClass="label1" stylesheets="@styles/login.css" />
+      <Button fx:id="verifCode" layoutX="334.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#verifCode" prefHeight="43.0" prefWidth="90.0" styleClass="button1" stylesheets="@styles/login.css" text="Verify" />
+      <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="61.0" prefWidth="126.0" styleClass="root1" stylesheets="@styles/bg.css" />
+      <FontAwesomeIcon glyphName="MOBILE" layoutX="208.0" layoutY="149.0" size="2em" wrappingWidth="16.3428692817688" />
+   </children>
+</AnchorPane>

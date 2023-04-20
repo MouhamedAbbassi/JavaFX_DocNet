@@ -143,6 +143,62 @@ public static UserSession userSession;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    } 
+    }
+       
+       
+    public String sendSMS(String numero) throws SQLException {
 
+        String requete = "SELECT numero FROM user WHERE numero=? ";
+        PreparedStatement pst =MaConnexion.getInstance().getCnx().prepareStatement(requete);
+        pst.setString(1, numero);
+        ResultSet rs;
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            numero = rs.getString("numero");
+            //password = rs.getString("password");
+        }
+        return numero;
+
+    }
+      public void setToken(String y ,String numero ) {
+        try {
+            String req =  "UPDATE user SET reset_token = '" +y+ "' WHERE `numero` =  '"+ numero +"'" ;
+  
+            Statement st = MaConnexion.getInstance().getCnx().prepareStatement(req);
+            st.executeUpdate(req);
+            System.out.println("code sent !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+          public boolean verifCode(String token) throws SQLException {
+
+        String requete = "SELECT reset_token FROM user WHERE reset_token=? ";
+        PreparedStatement pst =MaConnexion.getInstance().getCnx().prepareStatement(requete);
+        pst.setString(1, token);
+        ResultSet rs;
+        rs = pst.executeQuery();
+       String verif = null;
+
+        while (rs.next()) {
+            verif = rs.getString("reset_token");
+            //password = rs.getString("password");
+        }
+        if(verif==null)
+        return false;
+        else
+        return true;
+
+    }
+                public void resetPassword(String pass ,String numero ) {
+        try {
+            String req =  "UPDATE user SET password = '" +BCrypt.hashpw(pass, BCrypt.gensalt() )+ "' WHERE `numero` =  '"+ numero +"'" ;
+  
+            Statement st = MaConnexion.getInstance().getCnx().prepareStatement(req);
+            st.executeUpdate(req);
+            System.out.println("password updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

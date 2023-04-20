@@ -10,7 +10,9 @@ public class User
     private String password;
     private Role role;
     private String image; 
-    private String numero;
+    private String numero;  
+    private String reset_token;
+
 
 
 
@@ -39,6 +41,12 @@ public class User
       public User(String image)
     {
         this.image = image;
+       
+    }   
+      public User(String reset_token,boolean dummy)
+    {
+        this.reset_token = reset_token;
+        
        
     }
 
@@ -92,6 +100,14 @@ public class User
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getReset_token() {
+        return reset_token;
+    }
+
+    public void setReset_token(String reset_token) {
+        this.reset_token = reset_token;
     }
     
     
