@@ -48,7 +48,7 @@ public class AccueilController implements Initializable {
         // TODO
         btn_add.setOnAction(event -> {
             String username = "nassim.benali@esprit.tn";
-            String password = "nassim123";
+            String password = "";
             try {
             User user = service.findUserByUsernameAndPassword(username, password);
             if (user != null) {
@@ -74,7 +74,7 @@ public class AccueilController implements Initializable {
 
         btn_display.setOnAction(event -> {
             String username = "benalinassim412@gmail.com";
-            String password = "nassim123";
+            String password = "";
             try {
             User user = service.findUserByUsernameAndPassword(username, password);
             if (user != null) {
@@ -106,7 +106,7 @@ public class AccueilController implements Initializable {
     @FXML
     private void reservationButton(ActionEvent event) {
          String username = "benali@gmail.com";
-            String password = "nassim123";
+            String password = "";
             try {
             User user = service.findUserByUsernameAndPassword(username, password);
             if (user != null) {

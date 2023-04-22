@@ -16,7 +16,11 @@ import java.util.Properties;
 public class EmailSender {
     
     public static void sendEmail(String recipientEmail) throws MessagingException {
+<<<<<<< HEAD
         String username = "nassim.benali@esprit.tn"; // your email address
+=======
+        String username = ""; // your email address
+>>>>>>> de065f25747e84ab671de3f295d5924eb2662011
         String password = ""; // your email password
        
         String subject ="updateOrdonnance";
