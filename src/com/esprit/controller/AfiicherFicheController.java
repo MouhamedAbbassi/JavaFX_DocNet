@@ -236,7 +236,7 @@ public class AfiicherFicheController {
         try {
             // create a new PDF document
             PDDocument document = new PDDocument();
-            File imageFile = new File("src/uploads/pdfBackground1.png");
+            File imageFile = new File("src/uploads/pdfBackground11.png");
             PDImageXObject backgroundImage = PDImageXObject.createFromFile(imageFile.getAbsolutePath(), document);
             // create a new page and add it to the document
             PDPage page = new PDPage(new PDRectangle(backgroundImage.getWidth(), backgroundImage.getHeight()));
@@ -414,14 +414,16 @@ public class AfiicherFicheController {
                 Ordonnance ordonnance = ord.get(i);
                 // your code for adding ordonnance and its associated medicaments goes here
                 contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA, 17);
+                contentStream.setFont(PDType1Font.HELVETICA ,17);
                 contentStream.newLineAtOffset(xNumO, yNumO);
                 contentStream.showText("Ordonnance num " + numOrdonnance + " :");
                 contentStream.endText();
                 contentStream.beginText();
                 contentStream.setFont(PDType1Font.HELVETICA, 17);
                 contentStream.newLineAtOffset(xOrdonnance, yOrdonnance);
-                contentStream.showText(ordonnance.getCommentaire());
+               String text = ordonnance.getCommentaire().replace('\n', ' ');
+                contentStream.showText(text);
+                
                 contentStream.endText();
                 yOrdonnance -= 30;
 

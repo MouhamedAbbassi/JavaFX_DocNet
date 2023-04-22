@@ -39,7 +39,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 /**
  *
@@ -90,6 +93,8 @@ public class AfficheOrdonnanceController implements Initializable {
     private DatePicker dateSearchField;
     @FXML
     private Button ResetFields;
+    @FXML
+    private ComboBox<String> triCombobox;
 
     /**
      * Initializes the controller class.
@@ -97,6 +102,7 @@ public class AfficheOrdonnanceController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         filteredList = new FilteredList<>(list, p -> true);
+        triCombobox.setItems(FXCollections.observableArrayList("Date","Commentaire","Reset"));
         nomMedecin.setCellValueFactory(new PropertyValueFactory<>("nomMedecin"));
         nomPatient.setCellValueFactory(new PropertyValueFactory<>("nomPatient"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -147,6 +153,14 @@ public class AfficheOrdonnanceController implements Initializable {
                     int id = ordonnance.getId();
 
                     service.delete(id);
+                    Image img = new Image("/uploads/tick1.png");
+                    Notifications.create()
+                            .title("Ordonnance")
+                            .text("Ordonnance deleted successfully")
+                            .graphic(new ImageView(img))
+                            .darkStyle()
+                            .show();
+
                     try {
                         Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/AfficherPersonne.fxml"));
                         Scene scene = new Scene(page1);
@@ -170,6 +184,23 @@ public class AfficheOrdonnanceController implements Initializable {
             }
         });
         recherche.setOnAction(this::searchButton);
+        triCombobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                tftableview.getSortOrder().clear(); // clear any existing sorting
+                if (newValue.equals("Date")) {
+                    TableColumn<Ordonnance, LocalDate> dateColumn = (TableColumn<Ordonnance, LocalDate>) date;
+                    tftableview.getSortOrder().add(dateColumn); // sort by date column
+                    dateColumn.setSortType(TableColumn.SortType.ASCENDING); // set sorting order to ascending
+                } else if (newValue.equals("Commentaire")) {
+                    TableColumn<Ordonnance, String> commentaireColumn = (TableColumn<Ordonnance, String>) commentaire;
+                    tftableview.getSortOrder().add(commentaireColumn); // sort by commentaire column
+                    commentaireColumn.setSortType(TableColumn.SortType.ASCENDING); // set sorting order to ascending
+                }
+                tftableview.sort(); // sort the table view
+            } else { // reset button selected
+                tftableview.getSortOrder().clear(); // clear any existing sorting
+            }
+        });
         tftableview.setItems(list);
     } 
     

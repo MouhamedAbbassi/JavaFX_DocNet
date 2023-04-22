@@ -125,7 +125,7 @@ public class OrdonnanceService {
         try {
  
           String qry1="DELETE from ordonnance_medicament where ordonnance_id="+id;
-          String qry = "UPDATE ordonnance SET nom_medecin='"+o.getNomMedecin()+"',nom_patient='"+o.getNomPatient()+"',commentaire='"+o.getCommentaire()+"' WHERE ID="+id+"";
+          String qry = "UPDATE ordonnance SET nom_medecin='"+o.getNomMedecin()+"',nom_patient='"+o.getNomPatient()+"',date= CURRENT_DATE() ,commentaire='"+o.getCommentaire()+"' WHERE ID="+id+"";
         
           Statement statement = cnx.createStatement();
           int rowsUpdated1 = statement.executeUpdate(qry1);

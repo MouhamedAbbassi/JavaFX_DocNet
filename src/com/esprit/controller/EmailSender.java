@@ -17,7 +17,7 @@ public class EmailSender {
     
     public static void sendEmail(String recipientEmail) throws MessagingException {
         String username = "nassim.benali@esprit.tn"; // your email address
-        String password = "Nassimbenali4"; // your email password
+        String password = ""; // your email password
        
         String subject ="updateOrdonnance";
         String message ="your ordonnance has been updated";

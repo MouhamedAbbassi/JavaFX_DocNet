@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -31,9 +32,10 @@
          </font>
       </Label>
       <Button fx:id="logOut" layoutX="670.0" layoutY="496.0" mnemonicParsing="false" onAction="#logoutButton" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #CCCCFF;" text="Log Out" />
-      <DatePicker fx:id="dateSearchField" layoutX="107.0" layoutY="67.0" promptText="Recherche avec date" />
-      <TextField fx:id="commentaireSearchField" layoutX="345.0" layoutY="67.0" prefHeight="26.0" prefWidth="175.0" promptText="Recherche avec commentaire" />
-      <Button fx:id="recherche" layoutX="558.0" layoutY="67.0" mnemonicParsing="false" onAction="#searchButton" style="-fx-background-color: #CCCCFF;" text="Recherche" />
-      <Button fx:id="ResetFields" layoutX="655.0" layoutY="67.0" mnemonicParsing="false" onAction="#ResetFields" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #E9967A;" text="Reset" />  
+      <DatePicker fx:id="dateSearchField" layoutX="157.0" layoutY="67.0" promptText="Recherche avec date" />
+      <TextField fx:id="commentaireSearchField" layoutX="382.0" layoutY="67.0" prefHeight="26.0" prefWidth="175.0" promptText="Recherche avec commentaire" />
+      <Button fx:id="recherche" layoutX="578.0" layoutY="67.0" mnemonicParsing="false" onAction="#searchButton" style="-fx-background-color: #CCCCFF;" text="Recherche" />
+      <Button fx:id="ResetFields" layoutX="669.0" layoutY="67.0" mnemonicParsing="false" onAction="#ResetFields" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #E9967A;" text="Reset" />
+      <ComboBox fx:id="triCombobox" layoutX="33.0" layoutY="66.0" prefHeight="26.0" prefWidth="108.0" promptText="Trier par" />  
    </children>
 </AnchorPane>

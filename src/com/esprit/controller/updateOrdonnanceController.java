@@ -30,9 +30,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.mail.MessagingException;
+import org.controlsfx.control.Notifications;
 
 
 /**
@@ -212,8 +215,16 @@ public class updateOrdonnanceController {
            
             OrdonnanceMedicament om = new OrdonnanceMedicament(Integer.parseInt(dosage), Integer.parseInt(duration) ,medicamentId);
             service.modifierOM(om,idO);
-            EmailSender.sendEmail(recipientEmail);
+            
         }
+        EmailSender.sendEmail(recipientEmail);
+            Image img = new Image("/uploads/tick1.png");
+                    Notifications.create()
+                            .title("Ordonnance")
+                            .text("Ordonnance Updated successfully")
+                            .graphic(new ImageView(img))
+                            .darkStyle()
+                            .show();
         try {
             Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/AfficherPersonne.fxml"));
             Scene scene = new Scene(page1);
