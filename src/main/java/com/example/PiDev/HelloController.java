@@ -17,6 +17,11 @@ public class HelloController  {
         showPage("add_event");
 
     }
+    @FXML
+    void calender(   )   {
+        showPage("stats");
+
+    }
 
     @FXML
     void allEvents( ) {

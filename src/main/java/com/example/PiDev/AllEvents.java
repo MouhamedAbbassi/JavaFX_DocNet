@@ -9,15 +9,26 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
+import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class AllEvents implements Initializable {
     @FXML
@@ -57,9 +68,14 @@ public class AllEvents implements Initializable {
     private TextField upnom;
 
     @FXML
+    private TextField searchTxt;
+    @FXML
     private TextField upprix;
 
     private   EventModel item;
+
+    @FXML
+    Label quote;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         id.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().idProperty().asObject());
@@ -74,6 +90,90 @@ public class AllEvents implements Initializable {
         updescription.setVisible(false);
         save.setVisible(false);
         getAll();
+        try {
+            getQuote();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void getQuote() throws IOException {
+        String u = "https://api.quotable.io/random";
+        URL url = new URL(u);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        // Read the response from the server
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        ObjectMapper objectMapper = new ObjectMapper();
+        Qoute q = objectMapper.readValue(response.toString(),Qoute.class);
+
+
+        quote.setText(q.getContent()+"\n"+q.getAuthor());
+    }
+
+
+    @FXML
+    void findEvents(){
+        String filter=this.searchTxt.getText().toString();
+        System.out.println(filter);
+        DBHelper dbHelper = new DBHelper();
+        ObservableList<EventModel> events = FXCollections.observableList(dbHelper.findBy(filter));
+        table.setItems(events);
+    }
+    @FXML
+    void showQr() throws IOException {
+        var cell =  table.getFocusModel().getFocusedCell();
+        var item = table.getItems().get(cell.getRow());
+         Event e = new Event(item.getId(),
+                    item.getNom(),
+                item.getCapacite(),
+                item.getLocal(),
+                item.getDate(),
+                item.getPrix(),
+                item.getDescription(),
+                item.getCategorie()
+        );
+
+         String u = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ e.getNom()+e.getLocal()+e.getCapacite();
+        URL url = new URL(u);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        // Read the response from the server
+         InputStream in = con.getInputStream();
+
+         Image image = new Image(in);
+        System.out.println(con.getResponseMessage());
+        System.out.println(con.getContent().toString());
+        in.close();
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        VBox dialogBox = new VBox();
+        dialogBox.setAlignment(Pos.CENTER);
+        Label dialogLabel = new Label("Scan ");
+        Button closeButton = new Button("OK");
+         ImageView img = new ImageView(image);
+         img.setX(10);
+         img.setY(10);
+            img.setFitHeight(200);
+            img.setFitHeight(200);
+         closeButton.setOnAction(closeEvent -> dialogStage.close());
+        dialogBox.getChildren().addAll( dialogLabel,img , closeButton);
+        Scene dialogScene = new Scene(dialogBox, 400, 400);
+        dialogStage.setScene(dialogScene);
+        upcapacite.setVisible(false);
+         upprix.setVisible(false);
+        uplocal.setVisible(false);
+        upnom.setVisible(false);
+        updescription.setVisible(false);
+         save.setVisible(false);
+        dialogStage.show();
+
     }
 
     void getAll() {
@@ -99,7 +199,6 @@ public class AllEvents implements Initializable {
         Scene dialogScene = new Scene(dialogBox, 200, 100);
         dialogStage.setScene(dialogScene);
         dialogStage.show();
-
         getAll();
     }
 
