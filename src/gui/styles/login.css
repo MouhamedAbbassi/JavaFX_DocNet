@@ -48,7 +48,7 @@
 .labelProfile{
     -fx-font-family:"Roboto";
     -fx-font-size: 18;
-    -fx-text-fill:  #FFF;
+    -fx-text-fill:  #000;
     -fx-prompt-text-fill: #B6B6B6;
 }
 .labelimage{

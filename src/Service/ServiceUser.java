@@ -7,6 +7,10 @@ import Config.MaConnexion;
 import Entity.Role;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.mindrot.jbcrypt.BCrypt;
 public class ServiceUser
 {
@@ -97,10 +101,8 @@ public static UserSession userSession;
 
     public User GetUserByMailSession(String mail) {
             User user = null;
-            String pass = "";
-            String role = null;
         try {
-            String requete = "Select nom,prenom,email,image,numero from user where email = ?";
+            String requete = "Select nom,prenom,email,image,numero,roles,baned,status from user where email = ?";
             PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1, mail);
             ResultSet rs;
@@ -108,7 +110,7 @@ public static UserSession userSession;
 
                while (rs.next()) 
                {
-                   user = new User(rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("image"),rs.getString("numero") );               
+                   user = new User(rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("image"),rs.getString("numero"),rs.getString("roles"),rs.getString("baned"),rs.getInt("status") );               
                }
             } 
         catch (SQLException ex) 
@@ -201,4 +203,105 @@ public static UserSession userSession;
             System.out.println(ex.getMessage());
         }
     }
+                
+public ObservableList<User> afficherMedecin(){
+        ObservableList<User> mylist = FXCollections.observableArrayList();
+        try {
+            
+            String req="SELECT * FROM user WHERE roles = '[\"ROLE_MEDECIN\"]' ";
+            Statement st =MaConnexion.getInstance().getCnx().prepareStatement(req);
+            ResultSet rs= st.executeQuery(req);
+            while(rs.next()){
+                User u =new User();
+                u.setId(rs.getInt(1));
+                u.setNom(rs.getString(6));
+                u.setPrenom(rs.getString(7));
+                u.setEmail(rs.getString(3));
+                u.setNumero(rs.getString(11));   
+                u.setStatus(rs.getInt(15));
+
+                
+                mylist.add(u);
+                
+            }
+        } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
+        return mylist;
+        
+        
+    }
+public void Ban(User u) {
+    
+    try {
+        String requete = "UPDATE user SET baned='banned' WHERE id=?";
+        PreparedStatement ps = MaConnexion.getInstance().getCnx().prepareStatement(requete);
+    
+        ps.setInt(1, u.getId());
+        ps.executeUpdate();
+        System.out.println("L'etat a été changé avec succès !");
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+    
+    
+}
+public void DeBan(User u) {
+    
+    try {
+        String requete = "UPDATE user SET baned='actif' WHERE id=?";
+        PreparedStatement ps = MaConnexion.getInstance().getCnx().prepareStatement(requete);
+    
+        ps.setInt(1, u.getId());
+        ps.executeUpdate();
+        System.out.println("L'etat a été changé avec succès !");
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+    
+    
+}
+
+public ObservableList<User> afficherPatient(){
+        ObservableList<User> mylist = FXCollections.observableArrayList();
+        try {
+            
+            String req="SELECT * FROM user WHERE roles = '[\"ROLE_PATIENT\"]' ";
+            Statement st =MaConnexion.getInstance().getCnx().prepareStatement(req);
+            ResultSet rs= st.executeQuery(req);
+            while(rs.next()){
+                User u =new User();
+                u.setId(rs.getInt(1));
+                u.setNom(rs.getString(6));
+                u.setPrenom(rs.getString(7));
+                u.setEmail(rs.getString(3));
+                u.setNumero(rs.getString(11));   
+                u.setBaned(rs.getString(17));
+
+                
+                mylist.add(u);
+                
+            }
+        } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
+        return mylist;
+        
+        
+    }
+public void Approve(User u) {
+    
+    try {
+        String requete = "UPDATE user SET status='1' WHERE id=?";
+        PreparedStatement ps = MaConnexion.getInstance().getCnx().prepareStatement(requete);
+    
+        ps.setInt(1, u.getId());
+        ps.executeUpdate();
+        System.out.println("L'etat a été changé avec succès !");
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+    
+    
+}
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BannedController">
+   <children>
+      <AnchorPane layoutX="180.0" layoutY="103.0" prefHeight="327.0" prefWidth="673.0" styleClass="root2" stylesheets="@styles/bg.css" />
+      <Label layoutX="74.0" layoutY="561.0" stylesheets="@styles/cardoffres.css" text="Logout" />
+      <Label layoutX="280.0" layoutY="504.0" prefHeight="38.0" prefWidth="570.0" text="You are banned for some security reason...">
+         <font>
+            <Font name="System Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="logout" layoutX="24.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#logout" stylesheets="@styles/dashbord.css">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" text="" />
+         </graphic>
+         <styleClass>
+            <String fx:value="logout" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </Button>
+   </children>
+</AnchorPane>

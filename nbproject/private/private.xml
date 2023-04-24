@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/VerificationCodeController.java</file>
             <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/Service/ServiceUser.java</file>
-            <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/RegisterController.java</file>
-            <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/LoginController.java</file>
+            <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/MedecinViewController.java</file>
+            <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/ProfileAdminController.java</file>
             <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/ResetPasswordController.java</file>
             <file>file:/C:/Users/muham/Documents/NetBeansProjects/DocNet/src/gui/ForgotPasswordController.java</file>
         </group>

@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image:url('../../resource/bgg.png');
+    -fx-background-image:url('../../resource/bgg.jpg');
     -fx-background-size: cover;
 }
 .root1
@@ -8,8 +8,18 @@
     -fx-background-image:url('../../resource/DocNet.png');
     -fx-background-size: cover;
 }
+.root2
+{
+    -fx-background-image:url('../../resource/ban.png');
+    -fx-background-size: cover;
+}
+.root3
+{
+    -fx-background-image:url('../../resource/pending.png');
+    -fx-background-size: cover;
+}
 .Vbox
 {
-    -fx-background-color:#13123A ;
+    -fx-background-color:linear-gradient(to bottom right, #05E1FF, #051278);
     -fx-background-size: cover;
 }

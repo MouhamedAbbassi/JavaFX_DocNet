@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@styles/dashbord.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MedecinViewController">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="-2.0" layoutY="-2.0" prefHeight="604.8" prefWidth="1104.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="538.0" prefWidth="249.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="100.0" prefHeight="538.4" prefWidth="249.6" styleClass="nav-form" stylesheets="@styles/dashbord.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="92.0" layoutY="88.0" size="7em" />
+                              <Label layoutX="95.0" layoutY="111.0" text="Welcome" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tahoma" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="145.0" prefHeight="22.0" prefWidth="246.0" text="Admin" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                                 <font>
+                                    <Font name="Tahoma" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="99.10000610351562" layoutX="127.0" layoutY="179.0" startX="-101.70001220703125" stroke="#c9c9c9" />
+                              <Button layoutX="44.0" layoutY="194.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@../../../../../Downloads/dashbord.css" text="Home">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="showPatient" layoutX="44.0" layoutY="239.0" mnemonicParsing="false" onMouseClicked="#showPatient" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@../../../../../Downloads/dashbord.css" text="Show patient">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="1.2em" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="14.0" layoutY="492.0" mnemonicParsing="false" onAction="#logout" stylesheets="@styles/dashbord.css">
+                                 <graphic>
+                                    <FontAwesomeIcon fx:id="logout" fill="WHITE" glyphName="SIGN_OUT" size="2em" text="" />
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="logout" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                              <Label layoutX="67.0" layoutY="502.0" text="Logout" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="addagent_form" layoutX="45.0" layoutY="45.0" prefHeight="538.4" prefWidth="850.4" styleClass="root" stylesheets="@styles/bg.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="7.0" layoutY="8.0" prefHeight="399.0" prefWidth="834.0" stylesheets="@styles/dashbord.css">
+                                 <children>
+                                    <AnchorPane layoutY="1.0" prefHeight="299.0" prefWidth="834.0" stylesheets="@../../../../../Downloads/dashbord.css">
+                                       <styleClass>
+                                          <String fx:value="shadow" />
+                                          <String fx:value="white-bg" />
+                                       </styleClass>
+                                       <children>
+                                          <TextField fx:id="search" layoutX="9.0" layoutY="7.0" prefHeight="32.0" prefWidth="254.0" promptText="Search" styleClass="search" stylesheets="@../../../../../Downloads/dashbord.css" />
+                                          <FontAwesomeIcon glyphName="SEARCH" layoutX="13.0" layoutY="28.0" size="1.5em" />
+                                          <TableView fx:id="table_view" layoutX="3.0" layoutY="42.0" onMouseClicked="#UserSelect" onTouchMoved="#UserSelect" prefHeight="250.0" prefWidth="821.0" stylesheets="@styles/dashbord.css">
+                                             <columns>
+                                                <TableColumn fx:id="nom" prefWidth="150.39998817443848" text="Nom" />
+                                                <TableColumn fx:id="prenom" prefWidth="141.5999755859375" text="prenom" />
+                                                <TableColumn fx:id="telephone" prefWidth="158.39996337890625" text="Telephone" />
+                                                <TableColumn fx:id="mail" prefWidth="218.39999389648438" text="email" />
+                                                <TableColumn fx:id="status" prefWidth="153.60003662109375" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <Button fx:id="Approve" layoutX="363.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#Approve" prefHeight="37.0" prefWidth="76.0" styleClass="update-btn" stylesheets="@styles/dashbord.css" text="Approve" />
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

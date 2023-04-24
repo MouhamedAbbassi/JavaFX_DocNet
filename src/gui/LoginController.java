@@ -56,15 +56,58 @@ public class LoginController implements Initializable
                 User user = ServiceUser.login( email.getText(), password.getText());
                 ServiceUser.userSession = new UserSession();            
                 ServiceUser.userSession.setUserEmail(user.getEmail());
-                Role roles = user.getRole(); 
+                User u = ServiceUser.userSession.getUser(); 
+                String roles = u.getRoles();
+                if("[\"ROLE_ADMIN\"]".equals(roles))
+                {
                 System.out.println(roles);
-                System.out.println(roles);
-                Parent root = FXMLLoader.load(getClass().getResource("profileUser.fxml"));
+                Parent root1 = FXMLLoader.load(getClass().getResource("profileAdmin.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
+                Scene scene = new Scene(root1);
                 stage.setScene(scene);
                 stage.show();
-        }
+                }
+                if("[\"ROLE_PATIENT\"]".equals(roles))
+                {
+                
+                    if("banned".equals(u.getBaned()))
+                    {
+                Parent root2 = FXMLLoader.load(getClass().getResource("banned.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root2);
+                stage.setScene(scene);
+                stage.show();
+                
+                   } else
+                    {   Parent root2 = FXMLLoader.load(getClass().getResource("profileUser.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root2);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                
+                   }
+                if("[\"ROLE_MEDECIN\"]".equals(roles))
+                {
+                 
+                    if(1!=u.getStatus())
+                    {
+                        Parent root2 = FXMLLoader.load(getClass().getResource("approve.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root2);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else
+                    {   Parent root2 = FXMLLoader.load(getClass().getResource("profileUser.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root2);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                } 
+                          
+                }      
         }
     }
     

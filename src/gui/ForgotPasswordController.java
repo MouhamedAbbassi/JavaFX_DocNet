@@ -36,7 +36,7 @@ public class ForgotPasswordController implements Initializable {
     private Scene scene;
     private Parent root;
     public static final String ACCOUNT_SID = "ACe0d39e374a4b33c50217f1c834d14a13";
-    public static final String AUTH_TOKEN = "5e930d060e34882e4131bc1600ad5248";
+    public static final String AUTH_TOKEN = "9af472b97f13a4c72892cb7726de82d1";
  ServiceUser serviceUser = new ServiceUser();
     public String y, z;
     public String username, pass, mesg;

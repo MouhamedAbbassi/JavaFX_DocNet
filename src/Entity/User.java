@@ -3,15 +3,23 @@ package Entity;
  
 public class User
 {
-    private int id;
+    private Integer id;
     private String nom;
     private String prenom;
     private String email;
     private String password;
-    private Role role;
+    private Role role; 
+    private String roles;  
+    private String adresse;
+
+
     private String image; 
     private String numero;  
-    private String reset_token;
+    private String reset_token;  
+    private String baned;  
+    private int status;
+
+
 
 
 
@@ -46,16 +54,25 @@ public class User
       public User(String reset_token,boolean dummy)
     {
         this.reset_token = reset_token;
-        
-       
+  
     }
 
-    public User(String nom, String prenom, String email,  String image, String numero) {
+    public User(int id) {
+        this.id = id;
+    }
+ 
+
+    public User(String nom, String prenom, String email,  String image, String numero,String roles,String baned,int status) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.image = image;
-        this.numero = numero;
+        this.numero = numero; 
+        this.roles = roles;
+        this.baned =baned;    
+        this.status = status;
+
+
     }
         public User(String nom, String prenom , String numero) {
         this.nom = nom;
@@ -66,9 +83,9 @@ public class User
 
       
       
-    public int getId(){return id;}
+    public Integer getId(){return id;}
 
-    public void setId(int id){this.id = id;}
+    public void setId(Integer id){this.id = id;}
 
     public String getNom(){return nom;}
 
@@ -94,20 +111,32 @@ public class User
 
     public void setImage(String image) {this.image = image;}
 
-    public String getNumero() {
-        return numero;
+    public String getNumero() {return numero;}
+
+    public void setNumero(String numero) {this.numero = numero;}
+
+    public String getReset_token() {return reset_token;}
+
+    public void setReset_token(String reset_token) {this.reset_token = reset_token;}
+
+    public String getRoles() {return roles;}
+
+    public void setRoles(String roles) {this.roles = roles;}
+
+    public String getBaned() { return baned;}
+
+    public void setBaned(String baned) {this.baned = baned;}
+
+    public int getStatus() { return status;}
+
+    public void setStatus(int status) {this.status = status;}
+
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getReset_token() {
-        return reset_token;
-    }
-
-    public void setReset_token(String reset_token) {
-        this.reset_token = reset_token;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
     
     
