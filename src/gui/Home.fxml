@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
+   <children>
+        <ImageView fitHeight="83.0" fitWidth="81.0" layoutX="14.0" layoutY="-7.0">
+         <image>
+            <Image url="file:///C:/Users/muham/Documents/NetBeansProjects/DocNet/src/resource/DocNet.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="deleteRate" layoutX="197.0" layoutY="545.0" mnemonicParsing="false" onAction="#deleteRate" prefHeight="38.0" prefWidth="98.0" styleClass="button2" stylesheets="@styles.css" text="Delete" />
+      <Button fx:id="addButton" layoutX="925.0" layoutY="143.0" mnemonicParsing="false" onAction="#addRate" prefHeight="38.0" prefWidth="106.0" styleClass="button1" stylesheets="@styles.css" text="New" />
+      <Label layoutX="387.0" layoutY="114.0" prefHeight="84.0" prefWidth="289.0" text="Rates Display">
+         <font>
+            <Font name="Javanese Text" size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="rateTable" layoutX="79.0" layoutY="198.0" prefHeight="326.0" prefWidth="960.0" styleClass="idColumn" stylesheets="@styles.css">
+         <columns>
+             <TableColumn fx:id="idColumn" prefWidth="210.39999771118164" text="Id" />
+           
+            <TableColumn fx:id="n" prefWidth="274.3999786376953" text="Note" />
+            <TableColumn fx:id="opinionColumn" prefWidth="333.60003662109375" text="Opinion" />
+           
+         </columns>
+      </TableView>
+      <Button fx:id="updateButton" layoutX="74.0" layoutY="545.0" mnemonicParsing="false" onAction="#updateRate" prefHeight="38.0" prefWidth="98.0" stylesheets="@styles.css" text="Update" />
+      <Button fx:id="sortButton" layoutX="93.0" layoutY="143.0" onAction="#handleSortButton" prefHeight="39.0" prefWidth="98.0" stylesheets="@styles.css" text="Sort" />
+     <Button fx:id="home" layoutX="925.0" layoutY="20.0" minWidth="42.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" styleClass="button1" stylesheets="@styles/login.css" text="Home" />
+
+   </children>
+</AnchorPane>

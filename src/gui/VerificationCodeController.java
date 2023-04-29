@@ -63,12 +63,11 @@ public class VerificationCodeController implements Initializable {
                InnerShadow in = new InnerShadow();
                in.setColor(Color.web("#f80000"));
                code.setEffect(in);}
-       } else {
-       }}
+       }
+    }
     
     
-         private boolean validateString(TextField string) 
-         {      
+private boolean validateString(TextField string) {      
         if ((string.getText().length() == 0)) {
             new animatefx.animation.Shake(string).play();
             InnerShadow in = new InnerShadow();

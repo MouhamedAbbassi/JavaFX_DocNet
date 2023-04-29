@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddReservationController">
+    <children>
+       <ImageView fitHeight="83.0" fitWidth="81.0" layoutX="14.0" layoutY="-7.0">
+         <image>
+            <Image url="file:///C:/Users/muham/Documents/NetBeansProjects/DocNet/src/resource/DocNet.png" />
+         </image>
+      </ImageView>
+      <GridPane alignment="CENTER" hgap="10.0" layoutX="390.0" layoutY="202.0" prefHeight="290.0" prefWidth="250.0" vgap="10.0">
+        <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" />
+    </rowConstraints>
+    <Label styleClass="label1" stylesheets="@styles/login.css" text="Doctor:" />
+    <ComboBox fx:id="userComboBox" prefHeight="46.0" prefWidth="100.0" GridPane.columnIndex="1" />
+    <Label styleClass="label1" stylesheets="@styles/login.css" text="Start Date:" GridPane.rowIndex="2" />
+    <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label styleClass="label1" stylesheets="@styles/login.css" text="End Date:" GridPane.rowIndex="4" />
+    <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label styleClass="label1" stylesheets="@styles/login.css" text="Comment:" GridPane.rowIndex="6" />
+    <TextArea fx:id="commentArea" prefHeight="50" stylesheets="@styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+     
+    </GridPane>
+<Label layoutX="349.0" layoutY="34.0" prefHeight="84.0" prefWidth="310.0" text="Add a new reservation">
+      <font>
+         <Font name="Javanese Text" size="30.0" />
+      </font>
+   </Label>
+   <Button fx:id="check" layoutX="367.0" layoutY="150.0" mnemonicParsing="false" onAction="#check" prefHeight="42.0" prefWidth="274.0" styleClass="button3" stylesheets="@styles.css" text="Check Doctors " />
+   <Button fx:id="cancelButton" layoutX="546.0" layoutY="492.0" mnemonicParsing="false" onAction="#cancellres" prefHeight="41.0" prefWidth="82.0" styleClass="button2" stylesheets="@styles.css" text="Cancel" />
+     <Button fx:id="addRateButton" layoutX="423.0" layoutY="492.0" onAction="#handleAddReservation" stylesheets="@styles.css" text="Add " />
+ </children>
+</AnchorPane>

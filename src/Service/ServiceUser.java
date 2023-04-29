@@ -17,7 +17,7 @@ public class ServiceUser
 public static UserSession userSession;
      
      
-     public boolean register(User user) 
+public boolean register(User user) 
      {
          String roleType="";
          if (user.getRole()==Role.patient)
@@ -57,7 +57,7 @@ public static UserSession userSession;
             }
     }
     
-        public static User login(String email, String password) 
+public static User login(String email, String password) 
         {
             User user = null;
             String pass = "";
@@ -99,10 +99,10 @@ public static UserSession userSession;
 
    
 
-    public User GetUserByMailSession(String mail) {
+public User GetUserByMailSession(String mail) {
             User user = null;
         try {
-            String requete = "Select nom,prenom,email,image,numero,roles,baned,status from user where email = ?";
+            String requete = "Select id,nom,prenom,email,image,numero,roles,baned,status from user where email = ?";
             PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1, mail);
             ResultSet rs;
@@ -110,7 +110,7 @@ public static UserSession userSession;
 
                while (rs.next()) 
                {
-                   user = new User(rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("image"),rs.getString("numero"),rs.getString("roles"),rs.getString("baned"),rs.getInt("status") );               
+                   user = new User(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("image"),rs.getString("numero"),rs.getString("roles"),rs.getString("baned"),rs.getInt("status") );               
                }
             } 
         catch (SQLException ex) 
@@ -121,7 +121,7 @@ public static UserSession userSession;
         return user;
     }
     
-    public void Update(User u ,String mail ) {
+public void Update(User u ,String mail ) {
         try {
             String req =  "UPDATE user SET nom = '" + u.getNom() + "', prenom = '"
                 + u.getPrenom() + "', numero = '"
@@ -135,7 +135,7 @@ public static UserSession userSession;
         }
     }
   
-       public void addImage(User u ,String mail ) {
+public void addImage(User u ,String mail ) {
         try {
             String req =  "UPDATE user SET image = '" + u.getImage() + "' WHERE `email` =  '"+ mail +"'" ;
   
@@ -148,7 +148,7 @@ public static UserSession userSession;
     }
        
        
-    public String sendSMS(String numero) throws SQLException {
+public String sendSMS(String numero) throws SQLException {
 
         String requete = "SELECT numero FROM user WHERE numero=? ";
         PreparedStatement pst =MaConnexion.getInstance().getCnx().prepareStatement(requete);
@@ -162,7 +162,7 @@ public static UserSession userSession;
         return numero;
 
     }
-      public void setToken(String y ,String numero ) {
+public void setToken(String y ,String numero ) {
         try {
             String req =  "UPDATE user SET reset_token = '" +y+ "' WHERE `numero` =  '"+ numero +"'" ;
   
@@ -173,7 +173,7 @@ public static UserSession userSession;
             System.out.println(ex.getMessage());
         }
     }
-          public boolean verifCode(String token) throws SQLException {
+public boolean verifCode(String token) throws SQLException {
 
         String requete = "SELECT reset_token FROM user WHERE reset_token=? ";
         PreparedStatement pst =MaConnexion.getInstance().getCnx().prepareStatement(requete);
@@ -192,7 +192,8 @@ public static UserSession userSession;
         return true;
 
     }
-                public void resetPassword(String pass ,String numero ) {
+          
+public void resetPassword(String pass ,String numero ) {
         try {
             String req =  "UPDATE user SET password = '" +BCrypt.hashpw(pass, BCrypt.gensalt() )+ "' WHERE `numero` =  '"+ numero +"'" ;
   
@@ -304,4 +305,73 @@ public void Approve(User u) {
     
     
 }
+
+public ObservableList<User> afficher() {
+        ObservableList<User> c = FXCollections.observableArrayList();
+
+        try {
+            String req = "SELECT id,nom,prenom,email,rates FROM user";
+            Statement st =MaConnexion.getInstance().getCnx().prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+
+           int id = rs.getInt("id");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String email = rs.getString("email");
+                double rates = rs.getDouble("rates");
+               
+
+                User r = new User( id,nom, prenom, email,rates);
+                c.add(r);
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            
+        }
+        
+        return c
+                ;
+
+    }
+
+public void modifier(User u) {
+        try {
+
+            String req = "UPDATE user SET rates=? where id=?";
+            PreparedStatement pst =MaConnexion.getInstance().getCnx().prepareStatement(req);
+
+            pst.setDouble(1, u.getRates());
+            
+            pst.setInt(2, u.getId());
+
+            pst.executeUpdate();
+
+            System.out.println("note est modifiée !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+public User getUserById(int id) throws SQLException {
+        String req = "SELECT id,nom,prenom,email,rates FROM user WHERE id = ?";
+        try (PreparedStatement statement = MaConnexion.getInstance().getCnx().prepareStatement(req);) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int Id = resultSet.getInt("id");
+               String nom = resultSet.getString("nom");
+                String prenom = resultSet.getString("prenom");
+                String email = resultSet.getString("email");
+                double rates = resultSet.getDouble("rates");
+                return new User(Id, nom, prenom, email, rates);
+            } else {
+                return null;
+            }
+        }
+    }
 }

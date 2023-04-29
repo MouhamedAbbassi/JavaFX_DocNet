@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@styles/bg.css"    xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserController">
+    <children>
+         <ImageView fitHeight="105.0" fitWidth="589.0" layoutX="-13.0" layoutY="91.0">
+         <image>
+            <Image url="file:///C:/Users/selmi/Desktop/assets ghayth for java/bg-1.jpg" />
+         </image>
+      </ImageView>
+        <ImageView fitHeight="83.0" fitWidth="81.0" layoutX="14.0" layoutY="-7.0">
+         <image>
+            <Image url="file:///C:/Users/selmi/Desktop/assets ghayth for java/DocNet.png" />
+         </image>
+      </ImageView>  
+      <TableView fx:id="rateTable" layoutX="28.0" layoutY="297.0" prefHeight="218.0" prefWidth="395.0">
+         <columns>
+
+            <TableColumn fx:id="idc" prefWidth="88.00000381469727" text="Nom" />
+            <TableColumn fx:id="d" prefWidth="80.79998779296875" text="Prenom" />
+            <TableColumn fx:id="c" prefWidth="143.1999969482422" text="Email" />
+            <TableColumn fx:id="m" prefWidth="82.39996337890625" text="Rate" />
+            
+         </columns>
+      </TableView>
+      <TableView fx:id="stars" layoutX="439.0" layoutY="297.0" prefHeight="218.0" prefWidth="123.0">
+         <columns>
+                        
+            <TableColumn fx:id="s" prefWidth="122.40001220703125" text="Stars" />
+         </columns>
+      </TableView>
+            <Button fx:id="cancelButton" layoutX="240.0" layoutY="528.0" mnemonicParsing="false" onAction="#cancellres" prefHeight="41.0" prefWidth="82.0" styleClass="button2" text="Back" />
+<Label layoutX="175.0" layoutY="203.0" prefHeight="84.0" prefWidth="310.0" text="List of Doctors">
+      <font>
+         <Font name="Javanese Text" size="30.0" />
+      </font>
+   </Label>
+   </children>
+</AnchorPane>

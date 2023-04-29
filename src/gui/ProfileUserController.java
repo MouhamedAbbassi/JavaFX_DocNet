@@ -51,7 +51,10 @@ public class ProfileUserController implements Initializable {
     private Label email;
     @FXML
     private Label numero;
- 
+     @FXML
+    private Button rate;
+      @FXML
+    private Button reservation;
  
     @FXML
     private Label logout;
@@ -121,5 +124,45 @@ public class ProfileUserController implements Initializable {
      stage.show();
     }
     
+    
+    
+     @FXML
+    void rate() throws IOException {
+        // Load the FXML file of the UI you want to display
+        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+
+        // Create a new scene with the loaded FXML file as its root node
+        Scene scene = new Scene(root);
+
+        // Get the current stage (window) from the button's scene
+        Stage stage = (Stage) rate.getScene().getWindow();
+
+        // Set the new scene on the stage
+        stage.setScene(scene);
+
+        // Show the stage
+        stage.show();
+     
+    }
+    
+    
+    @FXML
+    void reservation() throws IOException {
+        // Load the FXML file of the UI you want to display
+        Parent root = FXMLLoader.load(getClass().getResource("displayReservation.fxml"));
+
+        // Create a new scene with the loaded FXML file as its root node
+        Scene scene = new Scene(root);
+
+        // Get the current stage (window) from the button's scene
+        Stage stage = (Stage) rate.getScene().getWindow();
+
+        // Set the new scene on the stage
+        stage.setScene(scene);
+
+        // Show the stage
+        stage.show();
+     
+    }
     
 }

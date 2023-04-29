@@ -1,0 +1,92 @@
+.root {
+    -fx-background-color: #87CEFA;
+}
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: #66B2FF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px ;
+    -fx-background-radius: 7px;
+}
+
+.button:hover {
+    -fx-background-color: #66B2FF;
+    -fx-text-fill: white;
+}
+
+/* Button styles on press */
+.button:pressed {
+    -fx-background-color: #0073e6;
+    -fx-text-fill: white;
+}
+.button2 {
+    -fx-background-color: white;
+    -fx-text-fill: #FF6666;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 7px;
+}
+
+.button2:hover {
+    -fx-background-color: #FF3333;
+}
+
+.button2:pressed {
+    -fx-background-color: #CC0000;
+}
+
+.button3 {
+    -fx-background-color: white;
+    -fx-text-fill: #444444 ;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 7px;
+}
+
+.button3:hover {
+    -fx-background-color: #444444 ;
+}
+
+.button3:pressed {
+    -fx-background-color: #333333;
+}
+
+.table-view {
+    -fx-background-color: #E0FFFF;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #66CDAA;
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-text-fill: black;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F0F8FF;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ADD8E6;
+}
+
+.table-row-cell:filled:selected:hover {
+    -fx-background-color: #87CEFA;
+}
+
+.label2 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+.text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #333333;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 12px;
+}

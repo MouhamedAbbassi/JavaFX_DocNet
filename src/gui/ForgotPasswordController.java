@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import Entity.User;
@@ -32,12 +27,12 @@ import javafx.stage.Stage;
  */
 public class ForgotPasswordController implements Initializable {
     
-     private Stage stage;
+    private Stage stage;
     private Scene scene;
     private Parent root;
     public static final String ACCOUNT_SID = "ACe0d39e374a4b33c50217f1c834d14a13";
     public static final String AUTH_TOKEN = "9af472b97f13a4c72892cb7726de82d1";
- ServiceUser serviceUser = new ServiceUser();
+    ServiceUser serviceUser = new ServiceUser();
     public String y, z;
     public String username, pass, mesg;
     @FXML
@@ -65,22 +60,20 @@ public class ForgotPasswordController implements Initializable {
         }
         String saltStr = salt.toString();
         return saltStr;
-    }
+        }
     
     @FXML
     private void sendSms(MouseEvent event) throws SQLException, IOException 
     {
-                ServiceUser u = new ServiceUser();
-
+        ServiceUser u = new ServiceUser();
         serviceUser.sendSMS(numero.getText());
             y = getToken();
             z = numero.getText();
-           // SharedData.data = z ;
-            try {
-                String user = serviceUser.sendSMS(numero.getText());   
-              
-
-            } catch (SQLException ex) 
+            try 
+            {
+                String user = serviceUser.sendSMS(numero.getText());              
+            } 
+            catch (SQLException ex) 
             {
                 System.out.println(ex);
             }

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DocNet.jar" size="1163384" download="eager" />
+    <jar href="DocNet.jar" size="1044126" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\AnimateFX-1.2.4.jar" size="99334" download="eager" />
     <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />

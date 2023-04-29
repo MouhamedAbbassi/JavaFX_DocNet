@@ -12,12 +12,36 @@ public class User
     private String roles;  
     private String adresse;
 
-
+  
     private String image; 
     private String numero;  
     private String reset_token;  
     private String baned;  
-    private int status;
+    private int status;  
+    private double rates;
+
+    public User(int id, String nom, String prenom, String email, String image, String numero, String roles, String baned, int status) {
+         this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+         this.email = email;
+       this.image = image;
+       this.numero = numero;
+       this.roles = roles;
+     this.baned = baned;
+      this.status = status;
+    }
+
+    public double getRates() {
+        return rates;
+    }
+
+    public void setRates(double rates) {
+        this.rates = rates;
+    }
+
+
+
 
 
 
@@ -80,6 +104,18 @@ public class User
         this.numero = numero;
     }
 
+    public User(int id, String nom, String prenom, String email, double rates) {
+               this.id = id;   
+               this.nom = nom;     
+               this.prenom = prenom;    
+               this.email = email;    
+               this.rates = rates;
+
+
+
+
+    }
+
 
       
       
@@ -137,6 +173,11 @@ public class User
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    @Override
+    public String toString() {
+        return  "Dr." + nom + " " + prenom ;
     }
     
     
