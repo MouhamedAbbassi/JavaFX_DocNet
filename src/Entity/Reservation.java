@@ -6,6 +6,8 @@
 package Entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -18,7 +20,12 @@ public class Reservation {
     private Date start;
     private Date end;
     private String comment;
-
+    private List<User> patients;
+    public Reservation() {
+        patients = new ArrayList<>();
+    }
+    
+    
     public Reservation(int id,int users_id, int patient_id, Date start, Date end, String comment) {
          this.id = id;  
         this.users_id = users_id;
@@ -108,5 +115,24 @@ public class Reservation {
  @Override
     public String toString() {
         return "Reservation {" + "id=" + id + ", users_id=" + users_id + ", patient_id=" + patient_id + ", start=" + start + ", end=" + end + ", comment=" +comment +  '}';
+    }
+    
+    /*public void setPatient(User patient) {
+        this.patient = patient;
+    }
+    public User getPatient() {
+        return patient;
+    }*/
+    public List<User> getPatient() {
+        return patients;
+    }
+   
+
+    public void addUser(User patient) {
+        this.patients.add(patient);
+    }
+
+    public void setMedicaments(List<User> patient) {
+        this.patients = patient;
     }
 }

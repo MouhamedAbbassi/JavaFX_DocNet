@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="770.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListePatientController">
+    <children>
+        <Label text="C'est la liste de vos patients" translateX="240.0" translateY="30.0">
+            <font>
+                <Font name="Serif Regular" size="29.0" />
+            </font>
+        </Label>
+        <Pagination fx:id="pagination" layoutX="250.0" layoutY="100.0" />
+                
+        <Button fx:id="returnButton" layoutY="760.0" mnemonicParsing="false" onAction="#returnButton" prefHeight="30.0" prefWidth="100.0" text="Return" />
+    </children>
+</AnchorPane>

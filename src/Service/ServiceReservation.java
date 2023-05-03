@@ -6,6 +6,7 @@ package Service;
 
 import Entity.Reservation;
 import Config.MaConnexion;
+import Entity.User;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -135,8 +136,79 @@ return list ;
             }
         }
     }
-    
-    
+    public ObservableList<Reservation> getReservationForPatient(int patientId,int doctorid) {
+    ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+    try {
+        String req = "SELECT * FROM reservation where users_id = " + doctorid + " AND patient_id = " + patientId;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+        
+             while (rs.next()) {
+               Reservation o = new Reservation();
+                o.setId(rs.getInt(1));
+                o.setstart(rs.getDate("start"));
+                reservations.add(o);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return reservations;
+    }
+   
+    public ObservableList<Reservation> getall(int id) {
+        ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+        try {
+             String req = "SELECT * FROM reservation WHERE users_id = " + id +
+                " AND id NOT IN (SELECT reservations_id FROM ordonnance WHERE doctor_id = " + id + ")";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Reservation r = new Reservation();
+                r.setId(rs.getInt(1));
+                r.setpatient_id(rs.getInt("patient_id"));
+
+                // Retrieve additional information from the user table
+                int patientId = rs.getInt("patient_id");
+                String userReq = "SELECT * FROM user WHERE id = " + patientId;
+                Statement userSt = cnx.createStatement();
+                ResultSet userRs = userSt.executeQuery(userReq);
+
+                if (userRs.next()) {
+                    User p = new User();
+                    p.setNom(userRs.getString("nom"));
+                    p.setPrenom(userRs.getString("prenom"));
+                    p.setEmail(userRs.getString("email"));
+                    System.out.println(p.getNom());
+                    if (p != null) {
+                        r.addUser(p);
+                    }
+                }
+
+                reservations.add(r);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return reservations;
+    }
+    public int getIdPatient(int id) {
+        int patientId = 0;
+        try {
+            String req = "select patient_id from reservation where id="+id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            if (rs.next()) {
+            patientId = rs.getInt("patient_id");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patientId;
+    }
 }
 
     

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import Entity.User;
 import Config.MaConnexion;
 import Entity.Role;
+import Entity.user_user;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -357,14 +358,15 @@ public void modifier(User u) {
         }
 
     }
-public User getUserById(int id) throws SQLException {
+
+    public User getUserById(int id) throws SQLException {
         String req = "SELECT id,nom,prenom,email,rates FROM user WHERE id = ?";
         try (PreparedStatement statement = MaConnexion.getInstance().getCnx().prepareStatement(req);) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 int Id = resultSet.getInt("id");
-               String nom = resultSet.getString("nom");
+                String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
                 String email = resultSet.getString("email");
                 double rates = resultSet.getDouble("rates");
@@ -373,5 +375,108 @@ public User getUserById(int id) throws SQLException {
                 return null;
             }
         }
+    }
+    
+    public String getPatientEmail(int id) {
+        String patientEmail = ""; // initialize with an invalid value
+        try {
+            String req = "SELECT email FROM user WHERE id = " + id;
+           PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(req);
+           ResultSet rs;
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                patientEmail = rs.getString("email");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patientEmail;
+    }
+    public User getPatientInfo(int id) {
+        User patient = null; // initialize with an invalid value
+        try {
+            String req = "SELECT * FROM user WHERE id = " + id;
+            PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(req);
+           ResultSet rs;
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                patient = new User();
+                patient.setId(rs.getInt("id"));
+                patient.setEmail(rs.getString("email"));
+                patient.setNom(rs.getString("nom"));
+                patient.setPrenom(rs.getString("prenom"));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return patient;
+    }
+    public User getDoctorInfo(int id) {
+        User doctor = null; // initialize with an invalid value
+        try {
+            String req = "SELECT * FROM user WHERE id = " + id;
+            PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(req);
+           ResultSet rs;
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                // Fetch the patient id from the patient_id column
+                doctor = new User();
+                doctor.setId(rs.getInt("id"));
+                doctor.setEmail(rs.getString("email"));
+                doctor.setNom(rs.getString("nom"));
+                doctor.setPrenom(rs.getString("prenom"));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return doctor;
+    }
+     public User findUser(int id) throws SQLException{
+      
+        String query = "SELECT * FROM user WHERE id = '"+id+ "'";
+        PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(query);
+           ResultSet rs;
+            rs = pst.executeQuery();
+        User user = null;
+        if (rs.next()) {
+            int id1 = rs.getInt("id");
+            String name = rs.getString("nom");
+            String email = rs.getString("email");
+            String lastname = rs.getString("prenom");
+            user = new User(id1, name, lastname, email);
+        }
+       
+        return user;
+    }
+     public ObservableList<User> getPatientsFromUserUserList(ObservableList<user_user> userUserList) {
+    ObservableList<User> patients = FXCollections.observableArrayList();
+    try {
+        String query = "SELECT * FROM user WHERE id = ?";
+        PreparedStatement statement = MaConnexion.getInstance().getCnx().prepareStatement(query);
+        for (user_user userUser : userUserList) {
+            statement.setInt(1, userUser.getUser_target());
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                User patient = new User();
+                patient.setId(rs.getInt("id"));
+                patient.setNom(rs.getString("nom"));
+                patient.setEmail(rs.getString("email"));
+                patient.setPrenom(rs.getString("prenom"));
+                patient.setImage(rs.getString("image"));
+                // Add other fields as needed
+                patients.add(patient);
+            }
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return patients;
     }
 }

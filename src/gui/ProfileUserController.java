@@ -58,6 +58,16 @@ public class ProfileUserController implements Initializable {
  
     @FXML
     private Label logout;
+    @FXML
+    private Button ordonnance;
+    @FXML
+    private Button update;
+    @FXML
+    private Label numero1;
+    @FXML
+    private Label email1;
+    @FXML
+    private Label prenom1;
  
  
     
@@ -163,6 +173,25 @@ public class ProfileUserController implements Initializable {
         // Show the stage
         stage.show();
      
+    }
+
+    @FXML
+    private void ordonnance(MouseEvent event) throws IOException {
+        UserSession userSession = new UserSession();
+        if("[\"ROLE_MEDECIN\"]".equals(userSession.getUser().getRoles()))
+                {
+        Parent root = FXMLLoader.load(getClass().getResource("AfficherOrdonnance.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+                }else if("[\"ROLE_PATIENT\"]".equals(userSession.getUser().getRoles())){
+                    Parent root = FXMLLoader.load(getClass().getResource("AfficherOrdonnancePatient.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+                }
     }
     
 }
