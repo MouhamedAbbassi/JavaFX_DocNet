@@ -146,7 +146,7 @@ public class AfiicherFicheController {
         res = reservations;
         ObservableList<Ordonnance> ordonnances = ordonnanceService.getOrdonnanceForPatient(patientId, userSession.getUser().getId());
         ord = ordonnances;
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
         reservationTable.setItems(reservations);
         dateColumns.setCellValueFactory(new PropertyValueFactory<>("date"));
         commentaireColumn.setCellValueFactory(new PropertyValueFactory<>("commentaire"));

@@ -146,7 +146,7 @@ return list ;
              while (rs.next()) {
                Reservation o = new Reservation();
                 o.setId(rs.getInt(1));
-                o.setstart(rs.getDate("start"));
+                o.setComment(rs.getString("start"));
                 reservations.add(o);
         }
     } catch (SQLException ex) {

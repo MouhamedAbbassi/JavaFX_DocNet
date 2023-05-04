@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.mindrot.jbcrypt.BCrypt;
@@ -479,4 +481,32 @@ public void modifier(User u) {
     }
     return patients;
     }
+     public void InsererUserUser(int doctor_id, int patient_id) {
+    try {
+        // Check if the row already exists
+        String selectQry = "SELECT COUNT(*) FROM user_user WHERE user_source=? AND user_target=?";
+        PreparedStatement selectStmt = MaConnexion.getInstance().getCnx().prepareStatement(selectQry);
+        selectStmt.setInt(1, doctor_id);
+        selectStmt.setInt(2, patient_id);
+        ResultSet rs = selectStmt.executeQuery();
+        rs.next();
+        int count = rs.getInt(1);
+
+        if (count > 0) {
+            // The row already exists
+            System.out.println("The row already exists.");
+            return;
+        }
+
+        // Insert the new row
+        String insertQry = "INSERT INTO user_user (user_source, user_target) VALUES (?, ?)";
+        PreparedStatement insertStmt = MaConnexion.getInstance().getCnx().prepareStatement(insertQry);
+        insertStmt.setInt(1, doctor_id);
+        insertStmt.setInt(2, patient_id);
+        insertStmt.executeUpdate();
+
+    } catch (SQLException ex) {
+        Logger.getLogger(OrdonnanceService.class.getName()).log(Level.SEVERE.SEVERE, null, ex);
+    }
+}
 }

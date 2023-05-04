@@ -7,6 +7,7 @@ package gui;
 
 import Entity.Reservation;
 import Entity.User;
+import Service.FicheService;
 import Service.ServiceReservation;
 import Service.ServiceUser;
 import Service.UserSession;
@@ -92,7 +93,8 @@ userComboBox.setItems(userList);
             // Get the values from the text fields
     User selectedUser = userComboBox.getSelectionModel().getSelectedItem();
 int userid = selectedUser.getId();
-
+ServiceUser serviceUser = new ServiceUser();
+        FicheService ficheService = new FicheService();
 
 
 UserSession userSession = new UserSession();
@@ -122,7 +124,8 @@ User currentUser = userSession.getUser();
     Reservation reservation=new Reservation(userid,patientid,sqlStartDate,sqlEndDate,comment);
     ServiceReservation reservationService = new ServiceReservation();
     reservationService.ajouter(reservation);
-    
+    serviceUser.InsererUserUser(userid, patientid);
+    ficheService.InsererFiche(userid, patientid);
      Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Reservation added ");
         alert.setContentText("The Reservation has been added succesfully.");

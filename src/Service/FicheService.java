@@ -10,6 +10,7 @@ import Entity.Medicament;
 import Entity.Ordonnance;
 import Config.MaConnexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -73,19 +74,37 @@ public class FicheService {
         
     }
     public void InsererFiche(int doctor_id, int patient_id) {
-        try {
-            System.out.println("444");
-            String qry = "INSERT INTO fiche (doctor_id, patient_id) VALUES ('" + doctor_id + "','"+ patient_id +"')";
-            Statement statement = cnx.createStatement();
-            int rowsUpdated = statement.executeUpdate(qry);
-            if (rowsUpdated > 0) {
-              System.out.println("The record has been add it successfully.");
-            } else {
-              System.out.println("Failed to add it the record.");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(OrdonnanceService.class.getName()).log(Level.SEVERE, null, ex);
+    try {
+        // Check if the row already exists
+        String selectQry = "SELECT COUNT(*) FROM fiche WHERE doctor_id=? AND patient_id=?";
+        PreparedStatement selectStmt = MaConnexion.getInstance().getCnx().prepareStatement(selectQry);
+        selectStmt.setInt(1, doctor_id);
+        selectStmt.setInt(2, patient_id);
+        ResultSet rs = selectStmt.executeQuery();
+        rs.next();
+        int count = rs.getInt(1);
+
+        if (count > 0) {
+            // The row already exists
+            System.out.println("The row already exists.");
+            return;
         }
-        
+
+        // Insert the new row
+        String insertQry = "INSERT INTO fiche (doctor_id, patient_id) VALUES (?, ?)";
+        PreparedStatement insertStmt = MaConnexion.getInstance().getCnx().prepareStatement(insertQry);
+        insertStmt.setInt(1, doctor_id);
+        insertStmt.setInt(2, patient_id);
+        int rowsUpdated = insertStmt.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            System.out.println("The record has been added successfully.");
+        } else {
+            System.out.println("Failed to add the record.");
+        }
+
+    } catch (SQLException ex) {
+        Logger.getLogger(OrdonnanceService.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
 }
