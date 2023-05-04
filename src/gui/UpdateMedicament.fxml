@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="502.0" prefWidth="879.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateMedicamentController">
+   <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/shutterstock_1467369743-min.jpg" />
+      </image>
+   </ImageView>
+   <Label layoutX="252.0" layoutY="35.0" prefHeight="40.0" prefWidth="374.0" text="Modifier un médicament">
+      <font>
+         <Font name="Serif Regular" size="36.0" />
+      </font></Label>
+    <Label layoutX="260.0" layoutY="115.0" text="Nom :">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+    <TextField fx:id="nomTextField" layoutX="369.0" layoutY="104.0" prefHeight="40.0" prefWidth="209.0" />
+   <Label layoutX="262.0" layoutY="178.0" text="Type:">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+   <ComboBox fx:id="typeComboBox" layoutX="369.0" layoutY="167.0" prefHeight="40.0" prefWidth="210.0" />
+    <Label layoutX="254.0" layoutY="230.0" text="Nombre de dose :">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+    <TextField fx:id="doseTextField" layoutX="369.0" layoutY="219.0" prefHeight="40.0" prefWidth="98.0" />
+    <Label layoutX="254.0" layoutY="280.0" text="Prix :">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+    <TextField fx:id="prixTextField" layoutX="369.0" layoutY="269.0" prefHeight="40.0" prefWidth="100.0" />
+    <Label layoutX="259.0" layoutY="329.0" text="Stock :">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+    <TextField fx:id="stockTextField" layoutX="369.0" layoutY="318.0" prefHeight="40.0" prefWidth="100.0" />
+    <Label layoutX="256.0" layoutY="391.0" text="Image :">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></Label>
+    <Button fx:id="uploadButton" layoutX="369.0" layoutY="387.0" mnemonicParsing="false" text="Uploader une image" />
+    <Button fx:id="updateButton" layoutX="634.0" layoutY="422.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="40.0" prefWidth="98.0" text="Update" />
+   <Button fx:id="retourbtn" layoutX="759.0" layoutY="422.0" mnemonicParsing="false" onAction="#returnButton" prefHeight="40.0" prefWidth="98.0" text="Cancel" />
+    
+   
+</AnchorPane>

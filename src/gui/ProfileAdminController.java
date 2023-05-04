@@ -48,8 +48,6 @@ public class ProfileAdminController implements Initializable {
     @FXML
     private TableView<User> table_view;
     @FXML
-    private TableColumn<?, ?> id;
-    @FXML
     private TableColumn<?, ?> nom;
     @FXML
     private TableColumn<?, ?> prenom;
@@ -71,6 +69,8 @@ public class ProfileAdminController implements Initializable {
     private Button showMedecin;
     @FXML
     private Button deban;
+    @FXML
+    private Button btndisp_med;
 
     /**
      * Initializes the controller class.
@@ -206,7 +206,21 @@ public class ProfileAdminController implements Initializable {
         sortList.comparatorProperty().bind(table_view.comparatorProperty());
         table_view.setItems(sortList);
     }
-
-    
+ 
+    @FXML
+    private void affichermedbtn(MouseEvent event) {
+        try {
+            
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMedicament.fxml"));
+            Parent root = loader.load();
+            Scene newScene = new Scene(root);
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(newScene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

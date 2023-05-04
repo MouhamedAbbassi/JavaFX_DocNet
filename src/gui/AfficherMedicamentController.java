@@ -118,10 +118,10 @@ public class AfficherMedicamentController implements Initializable {
                     // Perform the desired action on th-e selected row
                     int id = ordonnance.getId();
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/UpdateMedicament.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateMedicament.fxml"));
                         Parent root = loader.load();
-                        /*UpdateMedicamentController formController = loader.getController();
-                        formController.setMedicament(ordonnance);*/
+                        UpdateMedicamentController formController = loader.getController();
+                        formController.setMedicament(ordonnance);
                         Scene newScene = new Scene(root);
                         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         primaryStage.setScene(newScene);
@@ -155,7 +155,7 @@ public class AfficherMedicamentController implements Initializable {
 
                     service.deletem(id);
                     try {
-                        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/gui/AfficherMedicament.fxml"));
+                        Parent page1 = FXMLLoader.load(getClass().getResource("AfficherMedicament.fxml"));
                         Scene scene = new Scene(page1);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setScene(scene);
@@ -182,19 +182,7 @@ public class AfficherMedicamentController implements Initializable {
         medicamentsTable.setItems(list);
     }
 
-    @FXML
-    private void returnButton(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/Home.fxml"));
-            Parent root = loader.load();
-            Scene newScene = new Scene(root);
-            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            primaryStage.setScene(newScene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+   
 
     @FXML
     private void recherche(ActionEvent event) {
@@ -208,8 +196,42 @@ public class AfficherMedicamentController implements Initializable {
         sortedData.setComparator(byName);
         medicamentsTable.setItems(sortedData);
     }
-    
 
+    public void back(ActionEvent event) {
+        try {
+            // Get the reference of the current stage
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Load the new FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profileAdmin.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage and display the new scene
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+
+            // Close the current stage
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void ajoutermedbtn(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterMedicament.fxml"));
+            Parent root = loader.load();
+            Scene newScene = new Scene(root);
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(newScene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

@@ -193,5 +193,19 @@ public class ProfileUserController implements Initializable {
         stage.show();
                 }
     }
-    
+    @FXML
+    private void shopact(MouseEvent event) {
+        try {
+            
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("shop.fxml"));
+            Parent root = loader.load();
+            Scene newScene = new Scene(root);
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(newScene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

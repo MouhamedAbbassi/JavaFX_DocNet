@@ -8,9 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DocNet.jar" size="2245878" download="eager" />
+    <jar href="DocNet.jar" size="2267972" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\actlist-plugin-2.2.0.jar" size="122909" download="eager" />
+    <jar href="lib\barcode.jar" size="259748" download="eager" />
     <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />
     <jar href="lib\fontbox-2.0.1.jar" size="1476856" download="eager" />
@@ -21,7 +22,10 @@
     <jar href="lib\notification-24.0.2.jar" size="17914" download="eager" />
     <jar href="lib\org-apache-commons-logging.jar" size="60786" download="eager" />
     <jar href="lib\pdfbox-2.0.1.jar" size="2434793" download="eager" />
+    <jar href="lib\qrgen-1.0.jar" size="4932" download="eager" />
     <jar href="lib\twilio-9.5.0.jar" size="4924532" download="eager" />
+    <jar href="lib\zxing-core-1.7.jar" size="352719" download="eager" />
+    <jar href="lib\zxing-j2se-1.7.jar" size="22051" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="DocNet" >
     <param name="requiredFXVersion" value="8.0+"/>

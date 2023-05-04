@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterMedicamentController">
+    <children>
+      <ImageView fitHeight="406.0" fitWidth="606.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/shutterstock_1467369743-min.jpg" />
+         </image>
+      </ImageView>
+        <Label layoutX="30.0" layoutY="30.0" text="Nom:" />
+        <TextField fx:id="nomTextField" layoutX="125.0" layoutY="26.0" prefWidth="200" promptText="Nom" />
+
+     
+        <Label layoutX="30.0" layoutY="70.0" text="Type:" />
+        <ComboBox fx:id="typeComboBox" layoutX="126.0" layoutY="69.0" prefHeight="26.0" prefWidth="200.0" />
+        
+        <Label layoutX="21.0" layoutY="109.0" text="Nombre des doses" />
+        <TextField fx:id="doseTextField" layoutX="125.0" layoutY="105.0" prefWidth="200" promptText="Nombre des doses" /> 
+        
+        <Label layoutX="30.0" layoutY="150.0" text="Prix:" />
+        <TextField fx:id="prixTextField" layoutX="125.0" layoutY="146.0" prefWidth="200" promptText="Prix" />
+
+        <Label layoutX="30.0" layoutY="190.0" text="Stock:" />
+        <TextField fx:id="stockTextField" layoutX="125.0" layoutY="187.0" prefWidth="200" promptText="Stock" />
+
+  
+        <Label layoutX="30.0" layoutY="230.0" text="Image URL:" />
+
+        <Button fx:id="ajouterProduitButton" layoutX="485.0" layoutY="320.0" mnemonicParsing="false" onAction="#ajouterProduitButtonAction" text="Ajouter">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="381.0" layoutY="320.0" mnemonicParsing="false" onAction="#backto" text="Retour">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="uploadButton" layoutX="126.0" layoutY="226.0" mnemonicParsing="false" onAction="#upimg" prefHeight="26.0" prefWidth="200.0" text="Uploader une image" />
+      <Button fx:id="gen" layoutX="420.0" layoutY="32.0" mnemonicParsing="false" onAction="#gen" prefHeight="40.0" prefWidth="100.0" text="Generer" />
+      <Button layoutX="420.0" layoutY="139.0" mnemonicParsing="false" onAction="#read" prefHeight="40.0" prefWidth="100.0" text="Read" />
+      <TextField fx:id="QR_path" layoutX="396.0" layoutY="97.0" promptText="Enter QR_path" />
+
+    </children>
+
+    
+</AnchorPane>
