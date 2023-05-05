@@ -12,11 +12,7 @@ import javafx.scene.control.TextField;
 
 public class AddRateController {
     
-    @FXML
-    private TextField medIdTextField;
-    
-    @FXML
-    private TextField makeRateIdTextField;
+
     
     @FXML
     private TextField noteTextField;
