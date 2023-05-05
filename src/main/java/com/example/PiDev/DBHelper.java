@@ -66,6 +66,7 @@ public class DBHelper {
 
                 // Step 3: Execute the query or update query
                 preparedStatement.executeUpdate();
+
             } catch (SQLException ex) {
                 // print SQL exception information
                 printSQLException(ex);
@@ -173,7 +174,7 @@ public class DBHelper {
             }
         }
     void sendMail(String to) throws MessagingException {
-        String subject = "testing javafx";
+        String subject = "DOCNET MESSENGER !";
         String message = "check your events there ara some updates <3 <3 ";
 
         // Set up the properties of the email server

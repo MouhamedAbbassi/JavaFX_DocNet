@@ -140,7 +140,7 @@ public class AllEvents implements Initializable {
                 item.getCategorie()
         );
 
-         String u = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ e.getNom()+e.getLocal()+e.getCapacite();
+         String u = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ "L'EVENEMENT: "+"   "+e.getNom() +"    "+"DANS "+ e.getLocal() +"DE CAPACITE "+ "      "+e.getCapacite();
         URL url = new URL(u);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
