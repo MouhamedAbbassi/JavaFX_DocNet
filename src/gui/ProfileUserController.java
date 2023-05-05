@@ -58,6 +58,16 @@ public class ProfileUserController implements Initializable {
  
     @FXML
     private Label logout;
+    @FXML
+    private Button event;
+    @FXML
+    private Button update;
+    @FXML
+    private Label numero1;
+    @FXML
+    private Label email1;
+    @FXML
+    private Label prenom1;
  
  
     
@@ -163,6 +173,17 @@ public class ProfileUserController implements Initializable {
         // Show the stage
         stage.show();
      
+    }
+
+    @FXML
+    private void event(MouseEvent event) throws IOException 
+    {
+           // Load the FXML file of the UI you want to display
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) rate.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();  
     }
     
 }

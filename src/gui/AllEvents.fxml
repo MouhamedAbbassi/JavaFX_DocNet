@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@styles/bg.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AllEvents">
+   <children>
+      <TableView fx:id="table" layoutX="235.0" layoutY="161.0" prefHeight="200.0" prefWidth="482.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="nom" prefWidth="104.0" text="nom" />
+            <TableColumn fx:id="prix" prefWidth="99.0" text="prix" />
+            <TableColumn fx:id="local" prefWidth="203.0" text="local" />
+
+        </columns>
+      </TableView>
+       <Button id="deleteEventBtn" layoutX="313.0" layoutY="438.0" onMouseClicked="#deleteEvent" style="-fx-background-color: #ff2e2e;" text="Delete" textFill="WHITE" />
+       <Button id="updateEventBtn" fx:id="updateEventBtn" layoutX="498.0" layoutY="438.0" onAction="#updateEvent" onMouseClicked="#updateEvent" style="-fx-background-color: green;" text="update" textFill="#fffafa" />
+      <TextField fx:id="upnom" layoutX="235.0" layoutY="378.0" prefHeight="24.0" prefWidth="129.0" promptText="nom" />
+      <TextField fx:id="upcapacite" layoutX="374.0" layoutY="378.0" prefHeight="24.0" prefWidth="91.0" />
+      <TextField fx:id="uplocal" layoutX="477.0" layoutY="378.0" />
+      <TextField fx:id="upprix" layoutX="662.0" layoutY="378.0" prefHeight="24.0" prefWidth="91.0" />
+      <DatePicker fx:id="update" layoutX="230.0" layoutY="405.0" />
+      <TextField fx:id="updescription" layoutX="445.0" layoutY="405.0" prefHeight="24.0" prefWidth="312.0" />
+      <Button id="updateEventBtn" fx:id="save" layoutX="575.0" layoutY="438.0" onAction="#saveEvent" onMouseClicked="#updateEvent" style="-fx-background-color: green;" text="save" textFill="#fffafa" />
+      <HBox layoutX="235.0" layoutY="109.0" prefHeight="33.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="searchTxt" onKeyTyped="#findEvents" prefHeight="38.0" prefWidth="200.0" promptText="rechercher" />
+         </children>
+      </HBox>
+      <Button id="updateEventBtn" fx:id="qrbtn" layoutX="662.0" layoutY="438.0" onAction="#showQr" onMouseClicked="#updateEvent" style="-fx-background-color: green;" text="QR Code" textFill="#fffafa" />
+      <Label fx:id="quote" layoutX="215.0" layoutY="473.0" text="Quote" />
+
+   </children>
+</AnchorPane>

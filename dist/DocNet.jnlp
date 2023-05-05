@@ -8,11 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DocNet.jar" size="1163384" download="eager" />
+    <jar href="DocNet.jar" size="1186603" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\AnimateFX-1.2.4.jar" size="99334" download="eager" />
     <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />
     <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\gson-2.8.2.jar" size="232932" download="eager" />
     <jar href="lib\httpmime-4.5.3.jar" size="41029" download="eager" />
     <jar href="lib\ini4j-0.5.1.jar" size="96879" download="eager" />
     <jar href="lib\java-mail-1.4.4.jar" size="494975" download="eager" />

@@ -1,0 +1,4 @@
+.my-button:hover {
+    -fx-background-color: #336699; /* Change to your desired color */
+    -fx-text-fill: white; /* Change to your desired text color */
+}
